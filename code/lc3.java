@@ -6,9 +6,35 @@ package code;
 * 分类：Hash Table, Two Pointers, String
 * 算法：两个指针，记录没有重复字母的子串的首和尾
 *      lc76
+*
+*
+*
 */
 
+/**
+ * 这道题主要用到思路是：滑动窗口
+
+     什么是滑动窗口？
+
+     其实就是一个队列,比如例题中的 abcabcbb，进入这个队列（窗口）为 abc 满足题目要求，当再进入 a，队列变成了 abca，这时候不满足要求。所以，我们要移动这个队列！
+
+     如何移动？
+
+     我们只要把队列的左边的元素移出就行了，直到满足题目要求！
+
+     一直维持这样的队列，找出队列出现最长的长度时候，求出解！
+
+     时间复杂度：
+     O(n)
+
+     作者：powcai
+     链接：https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/solution/hua-dong-chuang-kou-by-powcai/
+     来源：力扣（LeetCode）
+     著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+ */
+
 import java.util.HashMap;
+import java.util.Map;
 
 public class lc3 {
     public static void main(String[] args) {
@@ -17,24 +43,22 @@ public class lc3 {
     }
 
     public static int lengthOfLongestSubstring(String s) {
-        HashMap<Character, Integer> hm = new HashMap<>();
         int max = 0;
-        int j = 0;
-        for (int i = 0; i < s.length(); i++) {
-            if (hm.containsKey(s.charAt(i))) {
-                j = Math.max(hm.get(s.charAt(i)) + 1, j);
-                //if input="abbabc"
-                //when i = 3, s.chatAt(3) == 'a' ,
-                //we will found last 'a' appears at index 0,
-                //but we should not update j from 2 ('b') to 0 ('a'),
-                //because here although the 'a' is in hashMap, but it appears before 'b'.
-            }
-            //i到j没有重复的字母，所以+1
-            //写到if外，因为可能该串本身就没有重复的字母，以及串首与串尾也要考虑
-            max = Math.max(i - j + 1, max);
-            hm.put(s.charAt(i), i);
+        if ("".equals(s) || s == null) {
+            return max;
         }
-        ;
+        Map<Character, Integer> map = new HashMap<>(16);
+        int left = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (map.containsKey(s.charAt(i))) {
+                // aba
+                left = Math.max(left, map.get(s.charAt(i)) + 1);
+            }
+            map.put(s.charAt(i), i);
+            // i - left + 1 is length of window
+            max = Math.max(max, i - left + 1);
+        }
         return max;
     }
+
 }
