@@ -3,3 +3,5 @@
 kickstart/*
 test.java
 interview/*
+.idea
+*.iml
