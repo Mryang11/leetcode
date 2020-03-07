@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 4. Median of Two Sorted Arrays
  * 题意：两个有序数组，找出中位数，要求复杂度O(logN)
@@ -9,55 +10,55 @@ package code;
  */
 public class lc4 {
     public static void main(String[] args) {
-        int[] nums1 = {1,2};
-        int[] nums2 = {3,4};
-        System.out.println(findMedianSortedArrays(nums1,nums2));
+        int[] nums1 = {1, 2};
+        int[] nums2 = {3, 4};
+        System.out.println(findMedianSortedArrays(nums1, nums2));
     }
 
     public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int size1 = nums1.length;
         int size2 = nums2.length;
-        if(size1>size2)
-            return findMedianSortedArrays(nums2,nums1);
+        if (size1 > size2)
+            return findMedianSortedArrays(nums2, nums1);
 
         int low = 0;
         int high = nums1.length;
 
-        while(low<=high){// <=别忘了=
-            int i = (low+high)/2;
-            int j = (size1+size2+1)/2-i;    // 注意+1
-            if(i>0 && nums1[i-1]>nums2[j]){  //注意判断i是否越界
+        while (low <= high) {// <=别忘了=
+            int i = (low + high) / 2;
+            int j = (size1 + size2 + 1) / 2 - i;    // 注意+1
+            if (i > 0 && nums1[i - 1] > nums2[j]) {  //注意判断i是否越界
                 //need reduce i
-                high = i-1;
-            }else if(i<size1 && nums2[j-1]>nums1[i]){ //注意判断i是否越界
+                high = i - 1;
+            } else if (i < size1 && nums2[j - 1] > nums1[i]) { //注意判断i是否越界
                 //need increase i
-                low = i+1;
-            }else{
+                low = i + 1;
+            } else {
                 //find correct i
-                int l,r;
-                if(i==0) {
+                int l, r;
+                if (i == 0) {
                     //nums1 没有 l
-                    l = nums2[j-1];
-                }else if(j==0){
+                    l = nums2[j - 1];
+                } else if (j == 0) {
                     //nums2 没有l，两个数组可能相等
-                    l = nums1[i-1];
-                } else{
-                    l = Math.max(nums1[i-1],nums2[j-1]);
+                    l = nums1[i - 1];
+                } else {
+                    l = Math.max(nums1[i - 1], nums2[j - 1]);
                 }
 
-                if((size1+size2)%2==1)
+                if ((size1 + size2) % 2 == 1)
                     return l;
 
-                if(i==size1){
+                if (i == size1) {
                     //nums1 没有 r
                     r = nums2[j];
-                }else if(j==size2){
+                } else if (j == size2) {
                     //nums2 没有 r
                     r = nums1[i];
-                }else{
-                    r = Math.min(nums1[i],nums2[j]);
+                } else {
+                    r = Math.min(nums1[i], nums2[j]);
                 }
-                return (l+r)*1.0/2;
+                return (l + r) * 1.0 / 2;
             }
         }
         return -1;

@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 326. Power of Three
  * 题意：判断该数是否为3的幂
@@ -13,12 +14,13 @@ public class lc326 {
         while (n % 3 == 0) n /= 3;
         return n == 1;
     }
+
     public boolean isPowerOfThree2(int n) {
-        if(n==1) return true;
+        if (n == 1) return true;
         double d = n;
-        while(d>1){
-            d=d/3;
-            if(d==1) return true;
+        while (d > 1) {
+            d = d / 3;
+            if (d == 1) return true;
         }
         return false;
     }

@@ -1,6 +1,7 @@
 package code;
 
 import java.util.PriorityQueue;
+
 /*
  * 295. Find Median from Data Stream
  * 题意：流数据中找中位数
@@ -15,7 +16,9 @@ public class lc295 {
         PriorityQueue<Integer> pq1;    //默认是最小，右半边
         PriorityQueue<Integer> pq2;    //左半边
 
-        /** initialize your data structure here. */
+        /**
+         * initialize your data structure here.
+         */
         public MedianFinder() {
             this.pq1 = new PriorityQueue();
             this.pq2 = new PriorityQueue();
@@ -29,8 +32,8 @@ public class lc295 {
         }
 
         public double findMedian() {
-            if(pq1.size()==pq2.size()+1) return pq1.peek();
-            return -((double)(-pq1.peek()+pq2.peek()))/2;
+            if (pq1.size() == pq2.size() + 1) return pq1.peek();
+            return -((double) (-pq1.peek() + pq2.peek())) / 2;
         }
     }
 }

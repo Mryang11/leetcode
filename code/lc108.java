@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 108. Convert Sorted Array to Binary Search Tree
  * 题意：将有序数组转换为二叉搜索树
@@ -8,22 +9,27 @@ package code;
  * Tips：Bingo!
  */
 public class lc108 {
+    public TreeNode sortedArrayToBST(int[] nums) {
+        TreeNode tn = helper(nums, 0, nums.length - 1);
+        return tn;
+    }
+
+    public TreeNode helper(int[] nums, int left, int right) {
+        if (left < right) return null;
+        int mid = (left + right) / 2;
+        TreeNode tn = new TreeNode(nums[mid]);
+        tn.left = helper(nums, left, mid - 1);
+        tn.right = helper(nums, mid + 1, right);
+        return tn;
+    }
+
     public class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
-    public TreeNode sortedArrayToBST(int[] nums) {
-        TreeNode tn = helper(nums, 0, nums.length-1);
-        return tn;
-    }
-    public TreeNode helper(int[] nums, int left, int right){
-        if(left<right) return null;
-        int mid = (left+right)/2;
-        TreeNode tn = new TreeNode(nums[mid]);
-        tn.left = helper(nums, left, mid-1);
-        tn.right = helper(nums, mid+1, right);
-        return tn;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }

@@ -8,6 +8,7 @@ package code;
  *       非常巧妙的方法，每次记录上车，下车人数，然后遍历一遍进行模拟上下车
  * Tips：lc253, lc56
  */
+
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -16,18 +17,18 @@ public class lc1094 {
         Arrays.sort(trips, new Comparator<int[]>() {  // 记住这种写法
             @Override
             public int compare(int[] o1, int[] o2) {
-                if(o1[1]!=o2[1])
+                if (o1[1] != o2[1])
                     return o1[1] - o2[1];
                 else
                     return o2[2] - o1[2];
             }
         });
-        for (int i = 0; i < trips.length ; i++) {
+        for (int i = 0; i < trips.length; i++) {
             int current = trips[i][0];
-            for (int j = i-1; j >=0 ; j--) { //往前找是否重叠
-                if(trips[j][2]>trips[i][1]) current += trips[j][0];
+            for (int j = i - 1; j >= 0; j--) { //往前找是否重叠
+                if (trips[j][2] > trips[i][1]) current += trips[j][0];
             }
-            if(current>capacity) return false;
+            if (current > capacity) return false;
         }
         return true;
     }

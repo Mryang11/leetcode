@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 7. Reverse Integer
  * 题意：反转一个整数
@@ -12,13 +13,13 @@ public class lc7 {
     }
 
     public static int reverse(int x) {
-        int result =0;
-        while(x!=0){
-            int temp = result *10 + x%10;
-            if(temp/10!=result)
+        int result = 0;
+        while (x != 0) {
+            int temp = result * 10 + x % 10;
+            if (temp / 10 != result)
                 return 0;
             result = temp;
-            x = x/10;
+            x = x / 10;
         }
         return result;
     }

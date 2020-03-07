@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 171. Excel Sheet Column Number
  * 题意：Excel列的表示转换为数字
@@ -11,8 +12,8 @@ public class lc171 {
     public int titleToNumber(String s) {
         char[] ch_arr = s.toCharArray();
         int res = 0;
-        for(int i=0; i<ch_arr.length; i++){
-            res += ( (ch_arr[i]-'A'+1) * Math.pow(26, ch_arr.length-1-i) );
+        for (int i = 0; i < ch_arr.length; i++) {
+            res += ((ch_arr[i] - 'A' + 1) * Math.pow(26, ch_arr.length - 1 - i));
         }
         return res;
     }

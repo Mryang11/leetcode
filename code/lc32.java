@@ -17,22 +17,22 @@ public class lc32 {
     }
 
     public static int longestValidParentheses(String s) {
-        if(s.length()==0)
+        if (s.length() == 0)
             return 0;
         // dp 方法
-        int[] dp = new int[s.length()+1];
-        int res=0;
-        for (int i = 2; i <dp.length; i++) {
-            if(s.charAt(i-1)=='(')
+        int[] dp = new int[s.length() + 1];
+        int res = 0;
+        for (int i = 2; i < dp.length; i++) {
+            if (s.charAt(i - 1) == '(')
                 dp[i] = 0;
-            else{
-                if(s.charAt(i-2)=='('){ // 这种情况：(())()
-                    dp[i] = dp[i-2]+2;
-                }else if(i-2-dp[i-1]>=0 && s.charAt(i-2-dp[i-1])=='('){ // 这种情况：()(()) , 第一个判断是判断索引是否合法
-                    dp[i] = dp[i-1] + dp[i-2-dp[i-1]]+2;
+            else {
+                if (s.charAt(i - 2) == '(') { // 这种情况：(())()
+                    dp[i] = dp[i - 2] + 2;
+                } else if (i - 2 - dp[i - 1] >= 0 && s.charAt(i - 2 - dp[i - 1]) == '(') { // 这种情况：()(()) , 第一个判断是判断索引是否合法
+                    dp[i] = dp[i - 1] + dp[i - 2 - dp[i - 1]] + 2;
                 }
             }
-            if(dp[i]>res)
+            if (dp[i] > res)
                 res = dp[i];
         }
         return res;
@@ -43,15 +43,15 @@ public class lc32 {
         Stack<Integer> st = new Stack();
         st.add(-1); //栈内先入-1
         int res = 0;
-        for (int i = 0; i < s.length() ; i++) {
+        for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
-            if(ch=='(')
+            if (ch == '(')
                 st.push(i);
-            else if(ch==')'){
+            else if (ch == ')') {
                 st.pop();
-                if(st.isEmpty())    //截断一下
+                if (st.isEmpty())    //截断一下
                     st.push(i);
-                res = Math.max(res,i-st.peek());
+                res = Math.max(res, i - st.peek());
             }
         }
         return res;

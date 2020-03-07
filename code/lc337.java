@@ -14,31 +14,25 @@ import java.util.HashMap;
  *       lc112, lc113, lc437, lc129, lc124, lc337
  */
 public class lc337 {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
     public int rob(TreeNode root) {
         return helper(root, new HashMap());
     }
 
-    public int helper(TreeNode root, HashMap<TreeNode, Integer> mem){
-        if(root==null)
+    public int helper(TreeNode root, HashMap<TreeNode, Integer> mem) {
+        if (root == null)
             return 0;
-        if(mem.containsKey(root))   //用mem去记忆一下子情况的结果，防止重复计算
+        if (mem.containsKey(root))   //用mem去记忆一下子情况的结果，防止重复计算
             return mem.get(root);
-        int val =0;
-        if(root.left!=null){
+        int val = 0;
+        if (root.left != null) {
             val += helper(root.left.left, mem);
             val += helper(root.left.right, mem);
         }
-        if(root.right!=null){
+        if (root.right != null) {
             val += helper(root.right.left, mem);
             val += helper(root.right.right, mem);
         }
-        int res = Math.max(root.val+val, helper(root.left, mem)+helper(root.right, mem));
+        int res = Math.max(root.val + val, helper(root.left, mem) + helper(root.right, mem));
         mem.put(root, res);
         return res;
     }
@@ -46,13 +40,24 @@ public class lc337 {
     public int rob2(TreeNode root) {
         return Math.max(helper2(root)[0], helper2(root)[1]);
     }
-    public int[] helper2(TreeNode root){
+
+    public int[] helper2(TreeNode root) {
         int[] res = new int[2];
-        if(root==null) return res;
+        if (root == null) return res;
         int[] left = helper2(root.left);
         int[] right = helper2(root.right);
         res[0] = root.val + left[1] + right[1];     // res[0] 表示该节点被抢的最大结果，下层节点不能被抢
         res[1] = Math.max(left[0], left[1]) + Math.max(right[0], right[1]);    // res[1] 表示该节点不抢的最大结果。注意不抢该节点，下层节点可能被抢，也可能不被抢，取大的。
         return res;
+    }
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }

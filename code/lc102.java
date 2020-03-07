@@ -7,31 +7,28 @@ package code;
  * 思路：用一个队列
  * Tips：如何判断遍历完一层了？pop的时候先看下size
  */
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class lc102 {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
-
     public List<List<Integer>> levelOrder(TreeNode root) {
         Queue<TreeNode> qu = new LinkedList<>();
         List<List<Integer>> res = new ArrayList<>();
-        if(root==null)
+        if (root == null)
             return res;
         qu.add(root);
-        while(!qu.isEmpty()){   //两个while
+        while (!qu.isEmpty()) {   //两个while
             int size = qu.size();
             List<Integer> temp = new ArrayList<>();
-            while(size>0){
+            while (size > 0) {
                 TreeNode tn = qu.remove();
-                if(tn!=null) {
-                    if(tn.left!=null)
+                if (tn != null) {
+                    if (tn.left != null)
                         qu.add(tn.left);
-                    if(tn.right!=null)
+                    if (tn.right != null)
                         qu.add(tn.right);
                 }
                 temp.add(tn.val);
@@ -40,5 +37,15 @@ public class lc102 {
             res.add(temp);
         }
         return res;
+    }
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }

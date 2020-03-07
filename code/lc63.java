@@ -22,20 +22,20 @@ public class lc63 {
     public static int uniquePathsWithObstacles(int[][] obstacleGrid) {
         int[][] m = new int[obstacleGrid.length][obstacleGrid[0].length];
         for (int i = 0; i < obstacleGrid.length; i++) {
-            for (int j = 0; j <obstacleGrid[i].length ; j++) {
-                if(obstacleGrid[i][j]==1){
+            for (int j = 0; j < obstacleGrid[i].length; j++) {
+                if (obstacleGrid[i][j] == 1) {
                     m[i][j] = 0;
-                }else if(i==0&&j==0){
+                } else if (i == 0 && j == 0) {
                     m[i][j] = 1;
-                }else if(i==0){
-                    m[i][j] = m[i][j-1];
-                }else if(j==0){
-                    m[i][j] = m[i-1][j];
-                }else{
-                    m[i][j] = m[i-1][j]+m[i][j-1];
+                } else if (i == 0) {
+                    m[i][j] = m[i][j - 1];
+                } else if (j == 0) {
+                    m[i][j] = m[i - 1][j];
+                } else {
+                    m[i][j] = m[i - 1][j] + m[i][j - 1];
                 }
             }
         }
-        return m[m.length-1][m[0].length-1];
+        return m[m.length - 1][m[0].length - 1];
     }
 }

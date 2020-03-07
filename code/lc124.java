@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 124. Binary Tree Maximum Path Sum
  * 题意：二叉树中找和最大的路径
@@ -9,23 +10,29 @@ package code;
  *      lc112, lc113, lc437, lc129, lc124, lc337, lc543, lc1026
  */
 public class lc124 {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
     int res = Integer.MIN_VALUE;      //可能小于0
+
     public int maxPathSum(TreeNode root) {
         dfs(root);
         return res;
     }
-    public int dfs(TreeNode root){
-        if(root==null)
+
+    public int dfs(TreeNode root) {
+        if (root == null)
             return 0;
-        int left = Math.max(dfs(root.left),0);
-        int right = Math.max(dfs(root.right),0);
-        res = Math.max(res, left+right+root.val);   //该节点是路径上的最高层节点
-        return Math.max(left,right)+root.val;
+        int left = Math.max(dfs(root.left), 0);
+        int right = Math.max(dfs(root.right), 0);
+        res = Math.max(res, left + right + root.val);   //该节点是路径上的最高层节点
+        return Math.max(left, right) + root.val;
+    }
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }

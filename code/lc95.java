@@ -14,14 +14,8 @@ import java.util.List;
  * Tips：lc96
  */
 public class lc95 {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
     public List<TreeNode> generateTrees(int n) {
-        if(n==0) return new LinkedList();
+        if (n == 0) return new LinkedList();
         return generateSubtrees(1, n);
     }
 
@@ -46,5 +40,15 @@ public class lc95 {
             }
         }
         return res;
+    }
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }

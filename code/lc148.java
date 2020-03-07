@@ -1,8 +1,5 @@
 package code;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /*
  * 148. Sort List
  * 题意：链表排序
@@ -15,19 +12,13 @@ import java.util.List;
  * Tips：空间复杂度不是O(1)的，但是几个高票答案都是这样写的，面试给出这样的代码应该也够了
  */
 public class lc148 {
-    public class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) { val = x; }
-    }
-
     public ListNode sortList(ListNode head) {
-        if( head==null || head.next == null ){
+        if (head == null || head.next == null) {
             return head;
         }
         ListNode slow = head;   //记一下
         ListNode fast = head.next;
-        while( fast!=null && fast.next!=null ){   //把链表分成两半
+        while (fast != null && fast.next != null) {   //把链表分成两半
             slow = slow.next;
             fast = fast.next.next;
         }
@@ -37,24 +28,24 @@ public class lc148 {
         return mergeList(l1, l2);
     }
 
-    public ListNode mergeList(ListNode l1, ListNode l2){
+    public ListNode mergeList(ListNode l1, ListNode l2) {
         ListNode res = new ListNode(0);
         ListNode head = res;
-        while( l1!=null && l2!=null ){
-            if(l1.val<l2.val){
+        while (l1 != null && l2 != null) {
+            if (l1.val < l2.val) {
                 res.next = l1;
                 l1 = l1.next;
                 res = res.next;
-            }else{
+            } else {
                 res.next = l2;
                 l2 = l2.next;
                 res = res.next;
             }
         }
-        if(l1!=null){
+        if (l1 != null) {
             res.next = l1;
         }
-        if(l2!=null){
+        if (l2 != null) {
             res.next = l2;
         }
         return head.next;
@@ -65,6 +56,7 @@ public class lc148 {
         quickSort(head, null);
         return head;
     }
+
     public void quickSort(ListNode head, ListNode end) {
         if (head != end) {
             ListNode node = partion(head, end);
@@ -94,5 +86,14 @@ public class lc148 {
         head.val = temp;
 
         return p1;  //返回
+    }
+
+    public class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+        }
     }
 }

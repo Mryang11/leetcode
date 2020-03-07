@@ -1,6 +1,7 @@
 package code;
 
 import java.util.Stack;
+
 /*
  * 1028. Recover a Tree From Preorder Traversal
  * 题意：从先序遍历恢复二叉树
@@ -10,18 +11,10 @@ import java.util.Stack;
  * Tips：
  */
 public class lc1028 {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) {
-            val = x;
-        }
-    }
     public TreeNode recoverFromPreorder(String S) {
         int level, val;
         Stack<TreeNode> stack = new Stack<>();
-        for (int i = 0; i < S.length();) {
+        for (int i = 0; i < S.length(); ) {
             for (level = 0; S.charAt(i) == '-'; i++) {
                 level++;
             }
@@ -45,5 +38,15 @@ public class lc1028 {
             stack.pop();
         }
         return stack.pop();
+    }
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }

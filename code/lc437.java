@@ -17,16 +17,6 @@ import java.util.HashMap;
  *       lc303, lc437, lc560
  */
 public class lc437 {
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
-
     public static int pathSum(TreeNode root, int sum) { //该节点作为起点
         if (root == null) return 0;
         return dfs(root, sum) + pathSum(root.left, sum) + pathSum(root.right, sum);
@@ -34,10 +24,10 @@ public class lc437 {
 
     public static int dfs(TreeNode root, int sum) { //一条路径向下走
         if (root == null) return 0;
-        if (root.val == sum) return 1 + dfs(root.left, sum - root.val) + dfs(root.right, sum - root.val);//不要直接返回1，因为可能后边节点，或节点和为0
+        if (root.val == sum)
+            return 1 + dfs(root.left, sum - root.val) + dfs(root.right, sum - root.val);//不要直接返回1，因为可能后边节点，或节点和为0
         return dfs(root.left, sum - root.val) + dfs(root.right, sum - root.val);
     }
-
 
     public static int pathSum2(TreeNode root, int sum) {//类似连续和为k的解法
         if (root == null) return 0;
@@ -45,16 +35,27 @@ public class lc437 {
         hs.put(0, 1);
         return helper(root, sum, hs, 0);
     }
+
     public static int helper(TreeNode root, int sum, HashMap<Integer, Integer> hs, int cur_sum) {
         if (root == null)
             return 0;
         cur_sum += root.val;
         int res = hs.getOrDefault(cur_sum - sum, 0);    //该节点作为尾节点的解的个数
-        hs.put(cur_sum, hs.getOrDefault(cur_sum, 0)+1);     //注意与上一句顺序
+        hs.put(cur_sum, hs.getOrDefault(cur_sum, 0) + 1);     //注意与上一句顺序
         res += helper(root.left, sum, hs, cur_sum);     //加上孩子节点的解
         res += helper(root.right, sum, hs, cur_sum);
-        hs.put(cur_sum, hs.get(cur_sum)-1);
+        hs.put(cur_sum, hs.get(cur_sum) - 1);
         return res;
+    }
+
+    public static class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }
 

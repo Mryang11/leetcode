@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 1027. Longest Arithmetic Sequence
  * 题意：最长等差数列
@@ -12,13 +13,13 @@ public class lc1027 {
     public static int longestArithSeqLength(int[] A) {
         int res = 0;
         int[][] dp = new int[A.length][20000];
-        for (int i = 0; i < A.length ; i++) {
-            for (int j = 0; j < i ; j++) {
-                int ind = A[i]-A[j]+10000;  //可能是负数，做一个偏移
+        for (int i = 0; i < A.length; i++) {
+            for (int j = 0; j < i; j++) {
+                int ind = A[i] - A[j] + 10000;  //可能是负数，做一个偏移
                 dp[i][ind] = dp[j][ind] + 1;
                 res = Math.max(res, dp[i][ind]);
             }
         }
-        return res+1; //加1
+        return res + 1; //加1
     }
 }

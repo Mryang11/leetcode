@@ -14,27 +14,28 @@ import java.util.List;
  */
 public class lc39 {
     public static void main(String[] args) {
-        int[] candidates = {2,3,6,7};
+        int[] candidates = {2, 3, 6, 7};
         int target = 7;
         System.out.println(combinationSum(candidates, target).toString());
     }
+
     public static List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
-        if(candidates.length==0||target==0) return res;
+        if (candidates.length == 0 || target == 0) return res;
         List<Integer> l = new ArrayList<Integer>();
-        backtracking(res,candidates,target,l,0,0);
+        backtracking(res, candidates, target, l, 0, 0);
         return res;
     }
 
-    public static void backtracking(List<List<Integer>> res, int[] candidates, int target, List<Integer> l, int sum, int start){
+    public static void backtracking(List<List<Integer>> res, int[] candidates, int target, List<Integer> l, int sum, int start) {
         for (int i = start; i < candidates.length; i++) {
             l.add(candidates[i]);
-            if(sum+candidates[i]==target) {
+            if (sum + candidates[i] == target) {
                 res.add(new ArrayList<>(l));//new 新的 List
-            } else if(sum+candidates[i]<target){
-                backtracking(res, candidates, target, l, sum+candidates[i],i);
+            } else if (sum + candidates[i] < target) {
+                backtracking(res, candidates, target, l, sum + candidates[i], i);
             }
-            l.remove((Integer)candidates[i]);
+            l.remove((Integer) candidates[i]);
         }
     }
 }

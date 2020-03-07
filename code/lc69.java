@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 69. Sqrt(x)
  * 题意：返回x的平方根, int取整
@@ -13,11 +14,11 @@ public class lc69 {
 
     public static int mySqrt(int x) {
         int left = 1, right = x;
-        while(left<=right){ // 等于时继续循环，保证向下取整
-            int mid = (left + right)/2;
-            if(mid==x/mid)
+        while (left <= right) { // 等于时继续循环，保证向下取整
+            int mid = (left + right) / 2;
+            if (mid == x / mid)
                 return mid;
-            else if(mid>x/mid)
+            else if (mid > x / mid)
                 right = mid - 1;
             else
                 left = mid + 1;

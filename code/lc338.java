@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 338. Counting Bits
  * 题意：0~n数字上1的个数
@@ -10,18 +11,19 @@ package code;
 public class lc338 {
     public static void main(String[] args) {
         int[] res = countBits(0);
-        for (int i = 0; i < res.length ; i++) {
+        for (int i = 0; i < res.length; i++) {
             System.out.print(res[i]);
             System.out.print(" ");
         }
     }
+
     public static int[] countBits(int num) {
-        int[] dp = new int[num+1];
+        int[] dp = new int[num + 1];
         int i = 1;
-        while(i<=num) {
+        while (i <= num) {
             dp[i] = 1;
             int max = i;
-            for (int j = 0; j<max && i<=num ; j++) {
+            for (int j = 0; j < max && i <= num; j++) {
                 dp[i] = 1 + dp[j];
                 i++;
             }

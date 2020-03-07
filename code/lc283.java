@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 283. Move Zeroes
  * 题意：把非0元素移到数组前边，相对位置不变
@@ -9,8 +10,8 @@ package code;
  */
 public class lc283 {
     public void moveZeroes(int[] nums) {
-        for (int i = 0, j=0; i < nums.length ; i++) {
-            if(nums[i]!=0){
+        for (int i = 0, j = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
                 int temp = nums[j];
                 nums[j] = nums[i];
                 nums[i] = temp;

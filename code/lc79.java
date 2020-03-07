@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 79. Word Search
  * 题意：在字符数组中搜索字符串
@@ -10,33 +11,33 @@ package code;
  */
 public class lc79 {
     public static void main(String[] args) {
-        char[][] board = {{'A','B','C','E'},{'S','F','C','S'},{'A','D','E','E'}};
-        System.out.println(exist(board,"SEE"));
+        char[][] board = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
+        System.out.println(exist(board, "SEE"));
     }
 
     public static boolean exist(char[][] board, String word) {
-        if(board.length==0)
+        if (board.length == 0)
             return false;
-        boolean [][] flag = new boolean[board.length][board[0].length];
-        for (int i = 0; i < board.length ; i++) {
-            for (int j = 0; j < board[0].length ; j++) {
-                if(search(board,word,i,j,0,flag))
+        boolean[][] flag = new boolean[board.length][board[0].length];
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if (search(board, word, i, j, 0, flag))
                     return true;
             }
         }
         return false;
     }
 
-    public static boolean search(char[][] board, String word, int i, int j, int sum, boolean[][] flag){
-        if(sum==word.length())
+    public static boolean search(char[][] board, String word, int i, int j, int sum, boolean[][] flag) {
+        if (sum == word.length())
             return true;
-        if(i<0||j<0||i>=board.length||j>=board[0].length)
+        if (i < 0 || j < 0 || i >= board.length || j >= board[0].length)
             return false;
-        if(board[i][j]!=word.charAt(sum)||flag[i][j]==true)
+        if (board[i][j] != word.charAt(sum) || flag[i][j] == true)
             return false;
         flag[i][j] = true;
         sum++;
-        boolean r = search(board, word, i, j+1, sum, flag)  || search(board, word, i, j-1, sum, flag) || search(board, word, i+1, j, sum, flag) ||search(board, word, i-1, j, sum, flag);
+        boolean r = search(board, word, i, j + 1, sum, flag) || search(board, word, i, j - 1, sum, flag) || search(board, word, i + 1, j, sum, flag) || search(board, word, i - 1, j, sum, flag);
         flag[i][j] = false;
         return r;
     }

@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 206. Reverse Linked List
  * 题意：链表反转
@@ -9,15 +10,9 @@ package code;
  *      lc25, lc206
  */
 public class lc206 {
-    public class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) { val = x; }
-    }
-
     public ListNode reverseList(ListNode head) {
         ListNode pre = null;    //头结点变尾节点，指向null
-        while(head!=null){
+        while (head != null) {
             ListNode next = head.next;
             head.next = pre;
             pre = head;
@@ -29,11 +24,21 @@ public class lc206 {
     public ListNode reverseList2(ListNode head) {   //递归
         return reverseListInt(head, null);
     }
+
     private ListNode reverseListInt(ListNode head, ListNode pre) {
         if (head == null)
             return pre;
         ListNode next = head.next;
         head.next = pre;
         return reverseListInt(next, head);  //尾递归，操作已经完成，最后返回最后结果罢了
+    }
+
+    public class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+        }
     }
 }

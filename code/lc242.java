@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 242. Valid Anagram
  * 题意：字符串t是否为s打乱后的重排列
@@ -9,14 +10,14 @@ package code;
  */
 public class lc242 {
     public boolean isAnagram(String s, String t) {
-        if(s.length()!=t.length()) return false;
+        if (s.length() != t.length()) return false;
         int[] chs = new int[26];
-        for(int i=0; i<s.length(); i++){
-            chs[s.charAt(i)-'a']++;
+        for (int i = 0; i < s.length(); i++) {
+            chs[s.charAt(i) - 'a']++;
         }
-        for(int i=0; i<t.length(); i++){
-            chs[t.charAt(i)-'a']--;
-            if(chs[t.charAt(i)-'a']<0) return false;
+        for (int i = 0; i < t.length(); i++) {
+            chs[t.charAt(i) - 'a']--;
+            if (chs[t.charAt(i) - 'a'] < 0) return false;
         }
         return true;
     }

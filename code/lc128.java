@@ -16,24 +16,25 @@ public class lc128 {
         int[] nums = {100, 4, 200, 1, 3, 2};
         System.out.println(longestConsecutive(nums));
     }
+
     public static int longestConsecutive(int[] nums) {
         Set<Integer> s = new HashSet();
-        for(int i:nums) s.add(i);
+        for (int i : nums) s.add(i);
         int max_len = 0;
-        for(int i:nums) {
-            if(s.contains(i)){
-                s.remove((Integer)i);
-                int left = i-1;
-                while(s.contains(left)){
-                    s.remove((Integer)left);
+        for (int i : nums) {
+            if (s.contains(i)) {
+                s.remove((Integer) i);
+                int left = i - 1;
+                while (s.contains(left)) {
+                    s.remove((Integer) left);
                     left--;
                 }
-                int right = i+1;
-                while(s.contains(right)){
-                    s.remove((Integer)right);
+                int right = i + 1;
+                while (s.contains(right)) {
+                    s.remove((Integer) right);
                     right++;
                 }
-                max_len = Math.max(right-left-1, max_len);
+                max_len = Math.max(right - left - 1, max_len);
             }
         }
         return max_len;

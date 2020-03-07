@@ -13,21 +13,22 @@ import java.util.List;
  */
 public class lc448 {
     public static void main(String[] args) {
-        System.out.println(findDisappearedNumbers(new int[]{4,3,2,7,8,2,3,1}));
+        System.out.println(findDisappearedNumbers(new int[]{4, 3, 2, 7, 8, 2, 3, 1}));
     }
+
     public static List<Integer> findDisappearedNumbers(int[] nums) {
-        for (int i = 0; i < nums.length ; i++) {
-            if(nums[i]-1!=i && nums[nums[i]-1]!=nums[i]) {
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] - 1 != i && nums[nums[i] - 1] != nums[i]) {
                 int temp = nums[i];
-                nums[i] = nums[temp-1];
-                nums[temp-1] = temp;
+                nums[i] = nums[temp - 1];
+                nums[temp - 1] = temp;
                 i--;
             }
         }
         List<Integer> res = new ArrayList<>();
-        for (int i = 0; i < nums.length ; i++) {
-            if(nums[i]!=i+1)
-                res.add(i+1);
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != i + 1)
+                res.add(i + 1);
         }
         return res;
     }

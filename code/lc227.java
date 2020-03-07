@@ -13,33 +13,30 @@ import java.util.Stack;
  */
 public class lc227 {
     public int calculate(String s) {
-        char[] chs = s.replace(" ","").toCharArray();
+        char[] chs = s.replace(" ", "").toCharArray();
         int num = 0;
         char sign = '+';
         Stack<Integer> st = new Stack();
-        for (int i = 0; i < chs.length ; i++) {
-            if(Character.isDigit(chs[i])){
-                num = num * 10 + chs[i]-'0';
+        for (int i = 0; i < chs.length; i++) {
+            if (Character.isDigit(chs[i])) {
+                num = num * 10 + chs[i] - '0';
             }
-            if( !Character.isDigit(chs[i]) || i==chs.length-1 ){    //遍历到最后，即使不是符号，也要计算
-                if(sign=='+'){
+            if (!Character.isDigit(chs[i]) || i == chs.length - 1) {    //遍历到最后，即使不是符号，也要计算
+                if (sign == '+') {
                     st.push(num);
-                }
-                else if(sign=='-'){
+                } else if (sign == '-') {
                     st.push(-num);
-                }
-                else if(sign=='*'){
-                    st.push(st.pop()*num);
-                }
-                else if(sign=='/'){
-                    st.push(st.pop()/num);
+                } else if (sign == '*') {
+                    st.push(st.pop() * num);
+                } else if (sign == '/') {
+                    st.push(st.pop() / num);
                 }
                 num = 0;
                 sign = chs[i];  //非常聪明
             }
         }
         int res = 0;
-        for(Integer i : st){
+        for (Integer i : st) {
             System.out.println(i);
             res += i;
         }

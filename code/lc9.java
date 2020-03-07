@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 9. Palindrome Number
  * 题意：判断数字是否是回文数字
@@ -11,9 +12,9 @@ public class lc9 {
     public boolean isPalindrome(int x) {
         int rev = 0;
         int temp = x;
-        while(x>0){
-            rev = rev*10 + x%10;
-            x = x/10;
+        while (x > 0) {
+            rev = rev * 10 + x % 10;
+            x = x / 10;
         }
         return rev == temp;
     }

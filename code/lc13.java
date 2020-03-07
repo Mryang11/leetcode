@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 13. Roman to Integer
  * 题意：罗马数字转Int
@@ -13,34 +14,34 @@ public class lc13 {
     }
 
     public static int romanToInt(String s) {
-        int sum =0;
-        for (int i = 0; i <s.length(); i++) {
-            if(s.charAt(i)=='I')
+        int sum = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == 'I')
                 sum += 1;
-            else if(s.charAt(i)=='V')
+            else if (s.charAt(i) == 'V')
                 sum += 5;
-            else if(s.charAt(i)=='X')
+            else if (s.charAt(i) == 'X')
                 sum += 10;
-            else if(s.charAt(i)=='L')
+            else if (s.charAt(i) == 'L')
                 sum += 50;
-            else if(s.charAt(i)=='C')
+            else if (s.charAt(i) == 'C')
                 sum += 100;
-            else if(s.charAt(i)=='D')
+            else if (s.charAt(i) == 'D')
                 sum += 500;
-            else if(s.charAt(i)=='M')
+            else if (s.charAt(i) == 'M')
                 sum += 1000;
         }
-        if(s.contains("IV"))
+        if (s.contains("IV"))
             sum -= 2;
-        if(s.contains("IX"))
+        if (s.contains("IX"))
             sum -= 2;
-        if(s.contains("XL"))
+        if (s.contains("XL"))
             sum -= 20;
-        if(s.contains("XC"))
+        if (s.contains("XC"))
             sum -= 20;
-        if(s.contains("CD"))
+        if (s.contains("CD"))
             sum -= 200;
-        if(s.contains("CM"))
+        if (s.contains("CM"))
             sum -= 200;
         return sum;
     }

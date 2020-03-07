@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 172. Factorial Trailing Zeroes
  * 题意：求n!末尾有几个0
@@ -9,7 +10,7 @@ package code;
  */
 public class lc172 {
     public int trailingZeroes(int n) {
-        if(n==0) return 0;
-        return n/5 + trailingZeroes(n/5);
+        if (n == 0) return 0;
+        return n / 5 + trailingZeroes(n / 5);
     }
 }

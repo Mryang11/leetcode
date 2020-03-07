@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 19. Remove Nth Node From End of List
  * 题意：删除链表中倒数第n个节点
@@ -14,11 +15,11 @@ public class lc19 {
         ListNode res = low;
         low.next = head;
         fast.next = head;
-        while(n>0){
+        while (n > 0) {
             fast = fast.next;
             n--;
         }
-        while(fast.next!=null){
+        while (fast.next != null) {
             low = low.next;
             fast = fast.next;
         }
@@ -27,9 +28,12 @@ public class lc19 {
         return res.next;
     }
 
-     public class ListNode {
+    public class ListNode {
         int val;
         ListNode next;
-        ListNode(int x) { val = x; }
+
+        ListNode(int x) {
+            val = x;
+        }
     }
 }

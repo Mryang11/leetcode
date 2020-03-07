@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 538. Convert BST to Greater Tree
  * 题意：二叉搜索树，让节点上的值+上所有比它大的值
@@ -9,19 +10,24 @@ package code;
  * Tips：
  */
 public class lc538 {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
     int sum = 0;
+
     public TreeNode convertBST(TreeNode root) {
-        if(root==null) return null;
+        if (root == null) return null;
         convertBST(root.right);
         sum += root.val;
         root.val = sum;
         convertBST(root.left);
         return root;
+    }
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }

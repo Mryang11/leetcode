@@ -18,21 +18,22 @@ public class lc46 {
 
     public static List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
-        backtracking(res,nums,new ArrayList());
+        backtracking(res, nums, new ArrayList());
         return res;
     }
-    public static void backtracking(List<List<Integer>> res, int[] nums, List l){
-        if(l.size()==nums.length){
+
+    public static void backtracking(List<List<Integer>> res, int[] nums, List l) {
+        if (l.size() == nums.length) {
             res.add(new ArrayList<>(l));
             return;
         }
 
-        for (int i = 0; i < nums.length ; i++) {
-            if(l.contains((Integer)nums[i]))    //防止相同的元素再次添加
+        for (int i = 0; i < nums.length; i++) {
+            if (l.contains((Integer) nums[i]))    //防止相同的元素再次添加
                 continue;
             l.add(nums[i]);
-            backtracking(res,nums,l);
-            l.remove((Integer)nums[i]);
+            backtracking(res, nums, l);
+            l.remove((Integer) nums[i]);
         }
     }
 

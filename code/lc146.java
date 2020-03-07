@@ -8,6 +8,7 @@ package code;
  * Tips：能想到双向链表，就不难了
  *      lc380
  */
+
 import java.util.HashMap;
 
 public class lc146 {
@@ -22,6 +23,7 @@ public class lc146 {
             this.value = value;
         }
     }
+
     public class LRUCache {
 
         HashMap<Integer, Node> map;

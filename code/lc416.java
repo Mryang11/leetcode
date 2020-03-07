@@ -1,6 +1,7 @@
 package code;
 
 import java.util.HashSet;
+
 /*
  * 416. Partition Equal Subset Sum
  * 题意：一个数组，可否分成和相等的两部分
@@ -19,24 +20,25 @@ public class lc416 {
         int[] nums = {1, 2, 5};
         System.out.println(canPartition(nums));
     }
+
     public static boolean canPartition(int[] nums) {    //自己写的不知道什么，回头看已经看不懂自己的代码了。。。
         int sum = 0;
         for (int i : nums) {
-            sum+=i;
+            sum += i;
         }
-        if(sum%2==1)
+        if (sum % 2 == 1)
             return false;
-        sum/=2;
+        sum /= 2;
         HashSet<Integer> s = new HashSet();
-        for (int i = 0; i < nums.length ; i++) {
-            if(nums[i]==sum)
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == sum)
                 return true;
             HashSet<Integer> s2 = new HashSet();    // 新建一个set,用以存放这一轮的结果
             s2.add(nums[i]);
-            for(int j: s){
-                if(j+nums[i]==sum)
+            for (int j : s) {
+                if (j + nums[i] == sum)
                     return true;
-                s2.add(j+nums[i]);
+                s2.add(j + nums[i]);
             }
             s.addAll(s2);
         }
@@ -63,8 +65,8 @@ public class lc416 {
         dp[0] = true;
         // dp transition
         for (int i = 1; i <= nums.length; i++) {
-            for (int j = volumn; j >= nums[i-1]; j--) { //从后往前更新，压缩空间
-                dp[j] = dp[j] || dp[j - nums[i-1]];
+            for (int j = volumn; j >= nums[i - 1]; j--) { //从后往前更新，压缩空间
+                dp[j] = dp[j] || dp[j - nums[i - 1]];
             }
         }
         return dp[volumn];
@@ -72,15 +74,15 @@ public class lc416 {
 
     public boolean canPartition3(int[] nums) {
         int sum = 0;
-        for(int i: nums) sum+=i;
-        if(sum%2==1) return false;
-        sum = sum/2;
-        boolean[][] dp = new boolean[nums.length+1][sum+1];
-        for(int i =0; i<=nums.length; i++) dp[i][0]=true;   //注意赋值0
-        for(int i=1; i<=nums.length; i++){
-            for(int j=1; j<=sum; j++){
-                dp[i][j] = dp[i-1][j];
-                if(j>=nums[i-1]) dp[i][j]= dp[i][j] || dp[i-1][j-nums[i-1]];   //注意判断index是否合法
+        for (int i : nums) sum += i;
+        if (sum % 2 == 1) return false;
+        sum = sum / 2;
+        boolean[][] dp = new boolean[nums.length + 1][sum + 1];
+        for (int i = 0; i <= nums.length; i++) dp[i][0] = true;   //注意赋值0
+        for (int i = 1; i <= nums.length; i++) {
+            for (int j = 1; j <= sum; j++) {
+                dp[i][j] = dp[i - 1][j];
+                if (j >= nums[i - 1]) dp[i][j] = dp[i][j] || dp[i - 1][j - nums[i - 1]];   //注意判断index是否合法
             }
         }
         return dp[nums.length][sum];

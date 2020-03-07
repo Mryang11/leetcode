@@ -12,19 +12,13 @@ import java.util.*;
  *
  */
 public class lc236 {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {//递归
-        if( root==null || root==p || root==q )  //注意这个条件
+        if (root == null || root == p || root == q)  //注意这个条件
             return root;
         TreeNode left = lowestCommonAncestor(root.left, p, q);
         TreeNode right = lowestCommonAncestor(root.right, p, q);
-        if( left!=null && right!=null ) return root;     //回溯返回。哪边不为空，返回哪边，否则返回自己。
-        else if(left!=null) return left;
+        if (left != null && right != null) return root;     //回溯返回。哪边不为空，返回哪边，否则返回自己。
+        else if (left != null) return left;
         else return right;
     }
 
@@ -53,5 +47,15 @@ public class lc236 {
         while (!ancestors.contains(q)) //第一个hashset中遇到的节点，就是最近公共祖先
             q = parent.get(q);
         return q;
+    }
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }

@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 27. Remove Element
  * 题意：移除掉数组中指定的值，返回移除后数组的长度
@@ -11,11 +12,11 @@ package code;
 public class lc27 {
     public int removeElement(int[] nums, int val) {
         int p1 = 0, p2 = 0;
-        while(p2<nums.length){
-            while(p1<nums.length&&nums[p1]!=val) p1++;  //p1指向要交换val的位置
-            p2=p1;
-            while(p2<nums.length&&nums[p2]==val) p2++;
-            if(p1<nums.length && p2<nums.length){
+        while (p2 < nums.length) {
+            while (p1 < nums.length && nums[p1] != val) p1++;  //p1指向要交换val的位置
+            p2 = p1;
+            while (p2 < nums.length && nums[p2] == val) p2++;
+            if (p1 < nums.length && p2 < nums.length) {
                 int temp = nums[p1];
                 nums[p1] = nums[p2];
                 nums[p2] = temp;

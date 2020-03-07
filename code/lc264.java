@@ -16,14 +16,14 @@ public class lc264 {
         PriorityQueue<Long> pr = new PriorityQueue<>(); //用Long,防止溢出
         pr.add(1L);
         long res = 0;
-        while(n>0){
+        while (n > 0) {
             res = pr.remove();
-            while(pr.size()>0 &&pr.peek()==res ) pr.remove();   //注意可能存在重复的数字
-            pr.add(res*2);
-            pr.add(res*3);
-            pr.add(res*5);
+            while (pr.size() > 0 && pr.peek() == res) pr.remove();   //注意可能存在重复的数字
+            pr.add(res * 2);
+            pr.add(res * 3);
+            pr.add(res * 5);
             n--;
         }
-        return (int)res;
+        return (int) res;
     }
 }

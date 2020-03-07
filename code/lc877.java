@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 877. Stone Game
  * 题意：两个人拿石头堆，每次只能从最左边或最右边拿
@@ -18,13 +19,13 @@ public class lc877 {
 
     public boolean stoneGame2(int[] piles) {
         int[][] dp = new int[piles.length][piles.length];
-        for (int i = 0; i < piles.length ; i++) dp[i][i] = piles[i];   //最后是第二个人拿的，用符号
-        for (int size = 1; size < piles.length ; size++) {  //外循环是 size
-            for (int i = 0; i+size < piles.length ; i++) { //size<len
-                dp[i][i+size] = Math.max(piles[i]-dp[i+1][i+size], piles[i+size]-dp[i][i+size-1]);
+        for (int i = 0; i < piles.length; i++) dp[i][i] = piles[i];   //最后是第二个人拿的，用符号
+        for (int size = 1; size < piles.length; size++) {  //外循环是 size
+            for (int i = 0; i + size < piles.length; i++) { //size<len
+                dp[i][i + size] = Math.max(piles[i] - dp[i + 1][i + size], piles[i + size] - dp[i][i + size - 1]);
             }
         }
-        return dp[0][piles.length-1]>0;
+        return dp[0][piles.length - 1] > 0;
     }
 
 }

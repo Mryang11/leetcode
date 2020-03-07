@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 685. Redundant Connection II
  * 题意：一个图，删掉一个边，使其成为一个根树
@@ -21,8 +22,8 @@ public class lc685 {
             if (parent[edges[i][1]] == 0) {
                 parent[edges[i][1]] = edges[i][0];
             } else {
-                can2 = new int[] {edges[i][0], edges[i][1]};
-                can1 = new int[] {parent[edges[i][1]], edges[i][1]};
+                can2 = new int[]{edges[i][0], edges[i][1]};
+                can1 = new int[]{parent[edges[i][1]], edges[i][1]};
                 edges[i][1] = 0;
             }
         }

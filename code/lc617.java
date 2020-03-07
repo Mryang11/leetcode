@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 617. Merge Two Binary Trees
  * 题意：合并两个二叉树
@@ -9,44 +10,49 @@ package code;
  *       想明白了再写，不要修修补补的。
  */
 public class lc617 {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
     public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
-        if(t1==null) return t2;
-        if(t2==null) return t1;
-        if(t1!=null && t2!=null) t1.val = t1.val + t2.val;
+        if (t1 == null) return t2;
+        if (t2 == null) return t1;
+        if (t1 != null && t2 != null) t1.val = t1.val + t2.val;
         helper(t1, t2);
         return t1;
     }
-    public void helper(TreeNode t1, TreeNode t2){
-        if(t1.left==null) {
+
+    public void helper(TreeNode t1, TreeNode t2) {
+        if (t1.left == null) {
             t1.left = t2.left;
             return;
         }
-        if(t1.right==null) {
+        if (t1.right == null) {
             t1.right = t2.right;
             return;
         }
-        if( t1.left!=null && t2.left!=null ) {
+        if (t1.left != null && t2.left != null) {
             t1.left.val = t1.left.val + t2.left.val;
             helper(t1.left, t2.left);
         }
-        if( t1.right!=null && t2.right!=null ) {
+        if (t1.right != null && t2.right != null) {
             t1.right.val = t1.right.val + t2.right.val;
             helper(t1.right, t2.right);
         }
     }
 
     public TreeNode mergeTrees2(TreeNode t1, TreeNode t2) {
-        if(t1==null) return t2;     //这里注意一下，比较难想明白，可以记一下
-        if(t2==null) return t1;
+        if (t1 == null) return t2;     //这里注意一下，比较难想明白，可以记一下
+        if (t2 == null) return t1;
         t1.left = mergeTrees(t1.left, t2.left);     //搞定下层指针
         t1.right = mergeTrees(t1.right, t2.right);  //前边判断过了，两个都不为null
         t1.val += t2.val;
         return t1;
+    }
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }

@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 28. Implement strStr()
  * 题意：找出子串在给定字符串的起始位置
@@ -15,18 +16,18 @@ public class lc28 {
     }
 
     public static int strStr(String haystack, String needle) {
-        if(needle.length()==0)
+        if (needle.length() == 0)
             return 0;
         int cur1 = 0, cur2 = 0;
-        while(cur1<haystack.length()){
-            if(haystack.charAt(cur1)==needle.charAt(cur2)){
+        while (cur1 < haystack.length()) {
+            if (haystack.charAt(cur1) == needle.charAt(cur2)) {
                 cur1++;
                 cur2++;
-                if(cur2==needle.length())
-                    return cur1-cur2;
-            }else{
+                if (cur2 == needle.length())
+                    return cur1 - cur2;
+            } else {
                 cur1++;
-                cur1 = cur1-cur2;
+                cur1 = cur1 - cur2;
                 cur2 = 0;
             }
         }

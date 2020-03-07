@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 461. Hamming Distance
  * 题意：转换为2进制，有几个位置上的值不同，就叫做Hamming distance
@@ -9,10 +10,10 @@ package code;
  */
 public class lc461 {
     public int hammingDistance(int x, int y) {
-        int num = x^y;
+        int num = x ^ y;
         int res = 0;
-        while(num>0){
-            res += num%2;
+        while (num > 0) {
+            res += num % 2;
             num /= 2;
         }
         return res;

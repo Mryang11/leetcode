@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 771. Jewels and Stones
  * 题意：S中出现的字符，在J中也出现的个数
@@ -9,9 +10,9 @@ package code;
  */
 public class lc771 {
     public int numJewelsInStones(String J, String S) {
-        int res=0;
-        for(char c : S.toCharArray()){
-            if(J.indexOf(c) != -1){
+        int res = 0;
+        for (char c : S.toCharArray()) {
+            if (J.indexOf(c) != -1) {
                 res++;
             }
         }

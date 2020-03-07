@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 543. Diameter of Binary Tree
  * 题意：树中的最长路径
@@ -8,23 +9,29 @@ package code;
  * Tips：
  */
 public class lc543 {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
     int max = 0;
+
     public int diameterOfBinaryTree(TreeNode root) {
         helper(root);
         return max;
     }
-    public int helper(TreeNode root){
-        if(root==null)
+
+    public int helper(TreeNode root) {
+        if (root == null)
             return 0;
         int left = helper(root.left);
         int right = helper(root.right);
-        max = Math.max(left+right, max);
-        return Math.max(left, right)+1;
+        max = Math.max(left + right, max);
+        return Math.max(left, right) + 1;
+    }
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }

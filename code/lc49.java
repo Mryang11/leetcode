@@ -1,6 +1,9 @@
 package code;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 /*
  * 49. Group Anagrams
@@ -11,17 +14,17 @@ import java.util.*;
  */
 public class lc49 {
     public List<List<String>> groupAnagrams(String[] strs) {
-        HashMap<String,List<String>> m = new HashMap();
-        for (int i = 0; i < strs.length ; i++) {
+        HashMap<String, List<String>> m = new HashMap();
+        for (int i = 0; i < strs.length; i++) {
             char[] chs = strs[i].toCharArray();
             Arrays.sort(chs);   //对字符串排序
             String key = String.valueOf(chs);
-            if(m.containsKey(key))
+            if (m.containsKey(key))
                 m.get(key).add(strs[i]);
             else {
                 ArrayList<String> l = new ArrayList<String>();
                 l.add(strs[i]);
-                m.put(key,l);
+                m.put(key, l);
             }
         }
         return new ArrayList(m.values());   //学下这句的语法

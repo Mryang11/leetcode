@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 387. First Unique Character in a String
  * 题意：第一个没有重复的字符索引
@@ -9,11 +10,11 @@ package code;
  */
 public class lc387 {
     public int firstUniqChar(String s) {
-        int freq [] = new int[26];
-        for(int i = 0; i < s.length(); i ++)
-            freq [s.charAt(i) - 'a'] ++;
-        for(int i = 0; i < s.length(); i ++)
-            if(freq [s.charAt(i) - 'a'] == 1)
+        int freq[] = new int[26];
+        for (int i = 0; i < s.length(); i++)
+            freq[s.charAt(i) - 'a']++;
+        for (int i = 0; i < s.length(); i++)
+            if (freq[s.charAt(i) - 'a'] == 1)
                 return i;
         return -1;
     }

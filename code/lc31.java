@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 31. Next Permutation
  * 题意：找出排列组合的下一个排列
@@ -13,27 +14,27 @@ package code;
  */
 public class lc31 {
     public static void main(String[] args) {
-        int[] nums = {1,5,8,4,7,6,5,3,1};
+        int[] nums = {1, 5, 8, 4, 7, 6, 5, 3, 1};
         nextPermutation(nums);
-        for (int i:nums){
+        for (int i : nums) {
             System.out.println(i);
         }
     }
 
     public static void nextPermutation(int[] nums) {
-        int ptr = nums.length-1;
+        int ptr = nums.length - 1;
 
         //从后往前找第一个变小的数x 从后往前找出比第一个x大的数
-        while(ptr>0&&nums[ptr-1]>=nums[ptr]){// 注意是 >= {5,1,1} , 等于--
+        while (ptr > 0 && nums[ptr - 1] >= nums[ptr]) {// 注意是 >= {5,1,1} , 等于--
             ptr--;
         }
         ptr--;
-        if(ptr!=-1){
+        if (ptr != -1) {
             //从后往前找出比第一个x大的数
             int val = nums[ptr];
-            int ptr2 = nums.length-1;
-            while(ptr2>ptr){
-                if(nums[ptr2]>nums[ptr]) break;
+            int ptr2 = nums.length - 1;
+            while (ptr2 > ptr) {
+                if (nums[ptr2] > nums[ptr]) break;
                 ptr2--;
             }
             nums[ptr] = nums[ptr2];
@@ -41,14 +42,15 @@ public class lc31 {
         }
 
         //把之后的数逆序
-        ReverseNums(nums,ptr+1,nums.length-1);  //+1，不包含ptr那个位置
+        ReverseNums(nums, ptr + 1, nums.length - 1);  //+1，不包含ptr那个位置
     }
-    public static void ReverseNums(int[] nums, int start, int end){
-        int l = end+start;
-        for (int i = start; i < (start+end+1)/2 ; i++) {
+
+    public static void ReverseNums(int[] nums, int start, int end) {
+        int l = end + start;
+        for (int i = start; i < (start + end + 1) / 2; i++) {
             int temp = nums[i];
-            nums[i] = nums[l-i];
-            nums[l-i] = temp;
+            nums[i] = nums[l - i];
+            nums[l - i] = temp;
         }
     }
 }

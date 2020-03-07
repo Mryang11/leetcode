@@ -17,8 +17,12 @@ public class lc297 {
         int val;
         TreeNode left;
         TreeNode right;
-        TreeNode(int x) { val = x; }
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
+
     public class Codec {
         private static final String spliter = ",";
         private static final String NN = "X";
@@ -36,9 +40,10 @@ public class lc297 {
             } else {
                 sb.append(node.val).append(spliter);
                 buildString(node.left, sb);
-                buildString(node.right,sb);
+                buildString(node.right, sb);
             }
         }
+
         // Decodes your encoded data to tree.
         public TreeNode deserialize(String data) {
             Deque<String> nodes = new LinkedList<>();

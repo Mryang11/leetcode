@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 268. Missing Number
  * 题意：找出 0~n 中少的那个数
@@ -11,13 +12,14 @@ package code;
  */
 public class lc268 {
     public int missingNumber(int[] nums) {
-        int res = nums.length*(nums.length+1)/2;
-        for(int i:nums) res-=i;
+        int res = nums.length * (nums.length + 1) / 2;
+        for (int i : nums) res -= i;
         return res;
     }
+
     public int missingNumber2(int[] nums) {
         int res = nums.length;  //异或上长度
-        for(int i=0; i<nums.length; i++) res^=i^nums[i];
+        for (int i = 0; i < nums.length; i++) res ^= i ^ nums[i];
         return res;
     }
 }

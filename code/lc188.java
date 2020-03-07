@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 188. Best Time to Buy and Sell Stock IV
  * 题意：买卖股票最大利润，可以买卖k次
@@ -12,26 +13,26 @@ package code;
  */
 public class lc188 {
     public int maxProfit(int k, int[] prices) {
-        if(prices.length==0) return 0;
+        if (prices.length == 0) return 0;
         int n = prices.length;
         //if k >= n/2, then you can make maximum number of transactions.
-        if (k >=  n/2) {
+        if (k >= n / 2) {
             int maxPro = 0;
             for (int i = 1; i < n; i++) {
-                if (prices[i] > prices[i-1])
-                    maxPro += prices[i] - prices[i-1];
+                if (prices[i] > prices[i - 1])
+                    maxPro += prices[i] - prices[i - 1];
             }
             return maxPro;
         }
 
-        int[][] dp = new int[k+1][prices.length];
-        for (int i = 1; i <= k ; i++) {
+        int[][] dp = new int[k + 1][prices.length];
+        for (int i = 1; i <= k; i++) {
             int localMax = -prices[0];
-            for (int j = 1; j < prices.length ; j++) {  //jj的计算和这一维合并，总的复杂度是二次方而不是三次
-                dp[i][j] = Math.max(dp[i][j-1], prices[j]+localMax);
-                localMax = Math.max(localMax, dp[i-1][j]-prices[j]);
+            for (int j = 1; j < prices.length; j++) {  //jj的计算和这一维合并，总的复杂度是二次方而不是三次
+                dp[i][j] = Math.max(dp[i][j - 1], prices[j] + localMax);
+                localMax = Math.max(localMax, dp[i - 1][j] - prices[j]);
             }
         }
-        return dp[k][prices.length-1];
+        return dp[k][prices.length - 1];
     }
 }

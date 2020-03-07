@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 312. Burst Balloons
  * 题意：踩气球，求怎样踩，值最大
@@ -12,15 +13,16 @@ package code;
  */
 public class lc312 {
     public static void main(String[] args) {
-        System.out.println(maxCoins2(new int[]{3,1,5,8}));
+        System.out.println(maxCoins2(new int[]{3, 1, 5, 8}));
     }
+
     public static int maxCoins(int[] iNums) {
         int[] nums = new int[iNums.length + 2];
         int n = 1;
         for (int x : iNums) if (x > 0) nums[n++] = x;
         nums[0] = nums[n++] = 1;
         int[][] memo = new int[n][n];
-        int res =  burst(memo, nums, 0, n - 1);
+        int res = burst(memo, nums, 0, n - 1);
         return res;
     }
 

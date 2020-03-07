@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 287. Find the Duplicate Number
  * 题意：n+1个数属于[1~n]，找出重复的那个数
@@ -12,12 +13,12 @@ package code;
  */
 public class lc287 {
     public int findDuplicate(int[] nums) {  //该方法修改了数组，是错误的，没看清题意
-        for (int i = 0; i < nums.length ; i++) {
-            if(nums[i]!=i+1){
-                int temp = nums[nums[i]-1];
-                if(temp==nums[i])
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != i + 1) {
+                int temp = nums[nums[i] - 1];
+                if (temp == nums[i])
                     return temp;
-                nums[nums[i]-1] = nums[i];
+                nums[nums[i] - 1] = nums[i];
                 nums[i] = temp;
                 i--;
             }
@@ -28,12 +29,12 @@ public class lc287 {
     public int findDuplicate2(int[] nums) {
         int slow = nums[0];
         int fast = nums[nums[0]];
-        while(slow!=fast){
+        while (slow != fast) {
             slow = nums[slow];
             fast = nums[nums[fast]];
         }
         fast = 0;   // fast是0,不是nums[0]
-        while(slow!=fast){
+        while (slow != fast) {
             slow = nums[slow];
             fast = nums[fast];
         }

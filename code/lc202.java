@@ -8,6 +8,7 @@ package code;
  *      也可利用判断链表是否有环的思路，一个计算一步，一个计算两步，看是会相等来判断
  * Tips：
  */
+
 import java.util.HashSet;
 
 public class lc202 {
@@ -15,14 +16,14 @@ public class lc202 {
         HashSet hs = new HashSet<Integer>();
         hs.add(n);
         int sum = 0;
-        while(true){
+        while (true) {
             sum = 0;
-            while(n!=0){
-                sum += Math.pow(n%10,2);
-                n = n/10;
+            while (n != 0) {
+                sum += Math.pow(n % 10, 2);
+                n = n / 10;
             }
-            if(sum==1) return true;
-            else if(hs.contains(sum)) break;
+            if (sum == 1) return true;
+            else if (hs.contains(sum)) break;
             hs.add(sum);
             n = sum;
             System.out.println(sum);

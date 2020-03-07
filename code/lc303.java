@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 303. Range Sum Query - Immutable
  * 题意：i到j的和
@@ -11,15 +12,16 @@ package code;
 public class lc303 {
     class NumArray {
         int[] arr;
+
         public NumArray(int[] nums) {
             arr = nums;
-            for(int i=1; i<arr.length; i++){
-                arr[i] = arr[i-1]+arr[i];
+            for (int i = 1; i < arr.length; i++) {
+                arr[i] = arr[i - 1] + arr[i];
             }
         }
 
         public int sumRange(int i, int j) {
-            return i==0? arr[j] : arr[j]-arr[i-1];
+            return i == 0 ? arr[j] : arr[j] - arr[i - 1];
         }
     }
 

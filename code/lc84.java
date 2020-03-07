@@ -14,7 +14,7 @@ import java.util.Stack;
  */
 public class lc84 {
     public static void main(String[] args) {
-        int[] heights = {2,1,5,6,2,3};
+        int[] heights = {2, 1, 5, 6, 2, 3};
         System.out.println(largestRectangleArea(heights));
         System.out.println(largestRectangleArea2(heights));
     }
@@ -22,18 +22,18 @@ public class lc84 {
     public static int largestRectangleArea(int[] heights) {
         Stack<Integer> st = new Stack();
         int res = 0;
-        for (int i = 0; i <= heights.length ; i++) {
+        for (int i = 0; i <= heights.length; i++) {
             int h = (i == heights.length ? 0 : heights[i]);
-            if( st.size()==0 || h>heights[st.peek()] ){ //递增入栈，保证栈内索引对应的Height递增
+            if (st.size() == 0 || h > heights[st.peek()]) { //递增入栈，保证栈内索引对应的Height递增
                 st.push(i);
-            }else{
+            } else {
                 int n = st.pop(); //计算该位置height高度的矩形
                 int left;
-                if(st.isEmpty())
+                if (st.isEmpty())
                     left = -1;  //若为空，则到最左边
                 else
                     left = st.peek();
-                res = Math.max(res, heights[n] * (i-left-1)); //i之前的，要-1; 注意是height[n], 不是height[i]
+                res = Math.max(res, heights[n] * (i - left - 1)); //i之前的，要-1; 注意是height[n], 不是height[i]
                 i--;    //注意i--，相当于循环出栈，总体复杂度还是O(n)，因为栈最大是heights.len
             }
         }
@@ -43,24 +43,24 @@ public class lc84 {
     public static int largestRectangleArea2(int[] heights) {
         int[] leftMax = new int[heights.length];
         int[] rightMax = new int[heights.length];
-        for (int i = 0; i < heights.length ; i++) { //get leftMax  注意这样dp时数组中保存的边界必须是i-1或i+1，否则无法dp传递
-            int p = i-1;
-            while( p>=0 && heights[p]>=heights[i]){
+        for (int i = 0; i < heights.length; i++) { //get leftMax  注意这样dp时数组中保存的边界必须是i-1或i+1，否则无法dp传递
+            int p = i - 1;
+            while (p >= 0 && heights[p] >= heights[i]) {
                 p = leftMax[p];
             }
             leftMax[i] = p;
         }
-        for (int i = heights.length-1; i >= 0 ; i--) { //get rightMax
+        for (int i = heights.length - 1; i >= 0; i--) { //get rightMax
             rightMax[i] = i;
-            int p = i+1;
-            while( p<heights.length && heights[p]>=heights[i]){
+            int p = i + 1;
+            while (p < heights.length && heights[p] >= heights[i]) {
                 p = rightMax[p];
             }
             rightMax[i] = p;
         }
         int res = 0;
-        for (int i = 0; i < heights.length ; i++) {
-            res = Math.max(res,(rightMax[i]-leftMax[i]-1)*heights[i]);
+        for (int i = 0; i < heights.length; i++) {
+            res = Math.max(res, (rightMax[i] - leftMax[i] - 1) * heights[i]);
         }
         return res;
     }

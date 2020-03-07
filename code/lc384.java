@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 384. Shuffle an Array
  * 题意：重排列一个数组，每个值在每个位置的概率都是均匀的
@@ -16,16 +17,20 @@ public class lc384 {
             this.nums = nums;
         }
 
-        /** Resets the array to its original configuration and return it. */
+        /**
+         * Resets the array to its original configuration and return it.
+         */
         public int[] reset() {
             return nums;
         }
 
-        /** Returns a random shuffling of the array. */
+        /**
+         * Returns a random shuffling of the array.
+         */
         public int[] shuffle() {
             int[] rand = new int[nums.length];
-            for (int i = 0; i < nums.length; i++){
-                int r = (int) (Math.random() * (i+1));  // +1是因为下标从0开始
+            for (int i = 0; i < nums.length; i++) {
+                int r = (int) (Math.random() * (i + 1));  // +1是因为下标从0开始
                 rand[i] = rand[r];
                 rand[r] = nums[i];
             }

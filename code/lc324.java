@@ -13,12 +13,12 @@ import java.util.Arrays;
  */
 public class lc324 {
     public void wiggleSort(int[] nums) {
-        if(nums.length==1) return;
+        if (nums.length == 1) return;
         int n = nums.length, m = (n + 1) >> 1;// (nums.length+1)/2 注意+1
         int[] copy = Arrays.copyOf(nums, n);
-        int median = findMedium(nums, 0, nums.length-1, m);
+        int median = findMedium(nums, 0, nums.length - 1, m);
 
-        for (int i = 0, j = 0, k = n - 1; j <= k;) {    // <medium的放左边， >在右边
+        for (int i = 0, j = 0, k = n - 1; j <= k; ) {    // <medium的放左边， >在右边
             if (copy[j] < median) {
                 swap(copy, j++, i++);
             } else if (copy[j] > median) {
@@ -38,21 +38,21 @@ public class lc324 {
         nums[j] = t;
     }
 
-    public int findMedium(int[] nums, int left, int right, int k){
+    public int findMedium(int[] nums, int left, int right, int k) {
         int l = left;
         int r = right;
-        while(left<right){
-            while( left<right && nums[right]>=nums[left] ) right--;
+        while (left < right) {
+            while (left < right && nums[right] >= nums[left]) right--;
             int temp = nums[left];
             nums[left] = nums[right];
             nums[right] = temp;
-            while( left<right && nums[left]<nums[right]) left++;
+            while (left < right && nums[left] < nums[right]) left++;
             temp = nums[left];
             nums[left] = nums[right];
             nums[right] = temp;
         }
-        if(left==k-1) return nums[left];
-        else if(left>=k) return findMedium(nums, l, right-1, k);
-        else return findMedium(nums, right+1, r, k);
+        if (left == k - 1) return nums[left];
+        else if (left >= k) return findMedium(nums, l, right - 1, k);
+        else return findMedium(nums, right + 1, r, k);
     }
 }

@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 494. Target Sum
  * 题意：给数组中的元素赋加减号，使得和为target的分配方案有几种
@@ -16,20 +17,20 @@ public class lc494 {
         for (int i : nums) {
             sum += i;
         }
-        if(S>sum||S<-sum)
+        if (S > sum || S < -sum)
             return 0;
-        int[] dp = new int[sum*2+1]; //还有0,所以+1
+        int[] dp = new int[sum * 2 + 1]; //还有0,所以+1
         dp[sum] = 1;
-        for (int i = 0; i < nums.length ; i++) {
-            int[] dp2 = new int[sum*2+1];
-            for (int j = 0; j < dp.length ; j++) {
-                if(j+nums[i]<dp.length)     //判断下别越界了
-                    dp2[j+nums[i]] += dp[j];       // +=dp[j]  求得是总数
-                if(j-nums[i]>=0)
-                    dp2[j-nums[i]] += dp[j];
+        for (int i = 0; i < nums.length; i++) {
+            int[] dp2 = new int[sum * 2 + 1];
+            for (int j = 0; j < dp.length; j++) {
+                if (j + nums[i] < dp.length)     //判断下别越界了
+                    dp2[j + nums[i]] += dp[j];       // +=dp[j]  求得是总数
+                if (j - nums[i] >= 0)
+                    dp2[j - nums[i]] += dp[j];
             }
             dp = dp2;
         }
-        return dp[S+sum];
+        return dp[S + sum];
     }
 }

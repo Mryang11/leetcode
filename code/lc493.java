@@ -13,37 +13,37 @@ import java.util.Arrays;
  * Tips：lc315
  */
 public class lc493 {
+    static int res = 0;
+
     public static void main(String[] args) {
-        reversePairs(new int[]{1,3,2,3,1});
+        reversePairs(new int[]{1, 3, 2, 3, 1});
         System.out.println(res);
     }
 
-    static int res = 0;
     public static int reversePairs(int[] nums) {
-        mergeSort(nums, 0, nums.length-1);
+        mergeSort(nums, 0, nums.length - 1);
         return res;
     }
 
-    public static void mergeSort(int[] nums, int left, int right){
-        if(left<right){
-            int mid = (left + right)/2;
+    public static void mergeSort(int[] nums, int left, int right) {
+        if (left < right) {
+            int mid = (left + right) / 2;
             mergeSort(nums, left, mid);
-            mergeSort(nums, mid+1, right);
+            mergeSort(nums, mid + 1, right);
             merge(nums, left, mid, right);
         }
     }
 
-    public static void merge(int[] nums, int left, int mid, int right){
+    public static void merge(int[] nums, int left, int mid, int right) {
         //count elements
         int pos1 = left;
-        int pos2 = mid+1;
+        int pos2 = mid + 1;
         int count = 0;
-        while(pos1<=mid){       //双指针 统计逆序对
-            if(pos2>right||nums[pos1]<=(double)nums[pos2]*2) {
+        while (pos1 <= mid) {       //双指针 统计逆序对
+            if (pos2 > right || nums[pos1] <= (double) nums[pos2] * 2) {
                 pos1++;
-                res+=count;
-            }
-            else{
+                res += count;
+            } else {
                 pos2++;
                 count++;
             }

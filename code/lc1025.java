@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 1025. Divisor Game
  * 题意：
@@ -9,7 +10,7 @@ package code;
  */
 public class lc1025 {
     public boolean divisorGame(int N) {
-        if(N%2==0) return true;
+        if (N % 2 == 0) return true;
         return false;
     }
 }

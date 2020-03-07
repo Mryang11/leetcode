@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 371. Sum of Two Integers
  * 题意：两个数相加，但不能用 + - 操作符号
@@ -10,6 +11,6 @@ package code;
  */
 public class lc371 {
     public int getSum(int a, int b) {
-        return b==0? a:getSum(a^b, (a&b)<<1);   // a^b 为不算进位的结果，加上进位
+        return b == 0 ? a : getSum(a ^ b, (a & b) << 1);   // a^b 为不算进位的结果，加上进位
     }
 }

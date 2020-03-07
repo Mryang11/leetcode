@@ -14,11 +14,11 @@ import java.util.List;
 public class lc119 {
     public List<Integer> getRow(int rowIndex) {
         ArrayList<Integer> res = new ArrayList<>();
-        res.add(0,1);
-        while(rowIndex-->0){
-            res.add(0,1);
-            for (int i = 1; i < res.size()-1 ; i++) {
-                res.set(i, res.get(i)+res.get(i+1));
+        res.add(0, 1);
+        while (rowIndex-- > 0) {
+            res.add(0, 1);
+            for (int i = 1; i < res.size() - 1; i++) {
+                res.set(i, res.get(i) + res.get(i + 1));
             }
         }
         return res;

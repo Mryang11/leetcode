@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 978. Longest Turbulent Subarray
  * 题意：小，大，小，大 这种最大长度是多少
@@ -27,25 +28,25 @@ public class lc978 {
     }
 
     public int maxTurbulenceSize2(int[] A) {
-        int[] arr = new int[A.length-1];
-        for(int i=1; i<A.length; i++){  //转换成0,1数组
-            if(A[i]==A[i-1]) arr[i-1] = 0;
-            else if(A[i]>A[i-1]) arr[i-1] = 1;
-            else arr[i-1] = -1;
+        int[] arr = new int[A.length - 1];
+        for (int i = 1; i < A.length; i++) {  //转换成0,1数组
+            if (A[i] == A[i - 1]) arr[i - 1] = 0;
+            else if (A[i] > A[i - 1]) arr[i - 1] = 1;
+            else arr[i - 1] = -1;
         }
         int res = 1;
         boolean flag = false;   //判断下是否全是0， 返回的时候就不+1
         int count = 1;
-        for(int i=1; i<arr.length; i++){
-            if(arr[i]!=0) flag=true;
-            if(arr[i]==-arr[i-1] && arr[i]!=0) {
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] != 0) flag = true;
+            if (arr[i] == -arr[i - 1] && arr[i] != 0) {
                 count++;
-            }else{
+            } else {
                 res = Math.max(res, count);
                 count = 1;
             }
         }
         res = Math.max(res, count);
-        return flag? res+1: res;
+        return flag ? res + 1 : res;
     }
 }

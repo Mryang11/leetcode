@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 125. Valid Palindrome
  * 题意：判断是否为回文
@@ -12,27 +13,28 @@ public class lc125 {
     public static void main(String[] args) {
         System.out.println(isPalindrome("A man, a plan, a canal: Panama"));
     }
+
     public static boolean isPalindrome(String s) {
         int begin = 0;
-        int end = s.length()-1;
+        int end = s.length() - 1;
         s = s.toLowerCase();    //转为小写
-        while(begin<end && !(helper(s.charAt(begin)))) begin++;
-        while(begin<end && !(helper(s.charAt(end)))) end--;
-        while(begin<end){
-            if(s.charAt(begin)==s.charAt(end)){
+        while (begin < end && !(helper(s.charAt(begin)))) begin++;
+        while (begin < end && !(helper(s.charAt(end)))) end--;
+        while (begin < end) {
+            if (s.charAt(begin) == s.charAt(end)) {
                 begin++;
                 end--;
-                while(begin<end && !(helper(s.charAt(begin)))) begin++;
-                while(begin<end && !(helper(s.charAt(end)))) end--;
-            }else{
+                while (begin < end && !(helper(s.charAt(begin)))) begin++;
+                while (begin < end && !(helper(s.charAt(end)))) end--;
+            } else {
                 return false;
             }
         }
         return true;
     }
 
-    public static boolean helper(Character ch){ //过滤非字符数字
-        if(Character.isAlphabetic(ch)||Character.isDigit(ch)) return true;
+    public static boolean helper(Character ch) { //过滤非字符数字
+        if (Character.isAlphabetic(ch) || Character.isDigit(ch)) return true;
         return false;
     }
 

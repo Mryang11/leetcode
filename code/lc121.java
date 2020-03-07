@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 121. Best Time to Buy and Sell Stock
  * 题意：股票买卖1次，最大利润
@@ -8,10 +9,10 @@ package code;
  */
 public class lc121 {
     public int maxProfit(int[] prices) {
-        int min = Integer.MAX_VALUE, res=0;
-        for(int i=0; i<prices.length; i++){
+        int min = Integer.MAX_VALUE, res = 0;
+        for (int i = 0; i < prices.length; i++) {
             min = Math.min(min, prices[i]);
-            res = Math.max(res, prices[i]-min);
+            res = Math.max(res, prices[i] - min);
         }
         return res;
     }

@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 2. Add Two Numbers
  * 题意：两个链表，节点上的数逆序组成一个数字，求和，返回链表
@@ -14,20 +15,20 @@ public class lc2 {
         int sum = 0;
         ListNode result = new ListNode(0);
         ListNode cur = result;
-        while(l1!=null || l2!=null){
-            if(l1!=null) {
+        while (l1 != null || l2 != null) {
+            if (l1 != null) {
                 sum += l1.val;
                 l1 = l1.next;
             }
-            if(l2!=null) {
+            if (l2 != null) {
                 sum += l2.val;
                 l2 = l2.next;
             }
-            cur.next = new ListNode(sum%10);
+            cur.next = new ListNode(sum % 10);
             cur = cur.next;
-            sum = sum/10;
+            sum = sum / 10;
         }
-        if(sum==1) {
+        if (sum == 1) {
             cur.next = new ListNode(1);
         }
         return result.next;
@@ -36,6 +37,9 @@ public class lc2 {
     public class ListNode {
         int val;
         ListNode next;
-        ListNode(int x) { val = x; }
+
+        ListNode(int x) {
+            val = x;
+        }
     }
 }

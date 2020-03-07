@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 25. Reverse Nodes in k-Group
  * 题意：每k个反转一下，不足k的不反转，直接接上
@@ -8,14 +9,6 @@ package code;
  * Tips：lc25, lc206
  */
 public class lc25 {
-    public class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) {
-            val = x;
-        }
-    }
-
     public ListNode reverseKGroup(ListNode head, int k) {
         ListNode curr = head;
         int count = 0;
@@ -35,5 +28,14 @@ public class lc25 {
             head = curr;
         }
         return head;
+    }
+
+    public class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+        }
     }
 }

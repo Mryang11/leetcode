@@ -11,43 +11,52 @@ import java.util.HashMap;
  * Tips：
  */
 public class lc149 {
-    class Point {
-        int x;
-        int y;
-        Point() { x = 0; y = 0; }
-        Point(int a, int b) { x = a; y = b; }
-    }
     public int maxPoints(Point[] points) {
-        if(points.length<=2) return points.length;
+        if (points.length <= 2) return points.length;
         int res = 0;
-        for (int i = 0; i < points.length-1 ; i++) {//先固定一个点，再根据斜率进行记录就行了
+        for (int i = 0; i < points.length - 1; i++) {//先固定一个点，再根据斜率进行记录就行了
             HashMap<Integer, HashMap<Integer, Integer>> hm = new HashMap<>();
             int overlap = 1;
             int max = 0;
-            for (int j = i+1; j < points.length ; j++) {
+            for (int j = i + 1; j < points.length; j++) {
                 int x = points[i].x - points[j].x;
                 int y = points[i].y - points[j].y;
-                if(x==0&&y==0){ //重复点
+                if (x == 0 && y == 0) { //重复点
                     overlap++;
                     continue;
                 }
                 int gcd = genGCD(x, y);
-                if(gcd!=0){ //注意，当一个值为0时，gcd==0
-                    x = x/gcd;
-                    y = y/gcd;
+                if (gcd != 0) { //注意，当一个值为0时，gcd==0
+                    x = x / gcd;
+                    y = y / gcd;
                 }
                 HashMap<Integer, Integer> hm2 = hm.getOrDefault(x, new HashMap<Integer, Integer>());
-                hm2.put(y,hm2.getOrDefault(y,0)+1);
-                hm.put(x,hm2);
+                hm2.put(y, hm2.getOrDefault(y, 0) + 1);
+                hm.put(x, hm2);
                 max = Math.max(max, hm2.get(y));
             }
-            res = Math.max(res, max+overlap);   //里边循环完了，才知道有几个overlap，所以在循环外加
+            res = Math.max(res, max + overlap);   //里边循环完了，才知道有几个overlap，所以在循环外加
         }
         return res;
     }
 
-    public int genGCD(int a, int b){
-        if(b==0) return a;  //注意和GCD不一样的是这没有比较大小，交换a,b。因为可能有负数
-        return genGCD(b, a%b);
+    public int genGCD(int a, int b) {
+        if (b == 0) return a;  //注意和GCD不一样的是这没有比较大小，交换a,b。因为可能有负数
+        return genGCD(b, a % b);
+    }
+
+    class Point {
+        int x;
+        int y;
+
+        Point() {
+            x = 0;
+            y = 0;
+        }
+
+        Point(int a, int b) {
+            x = a;
+            y = b;
+        }
     }
 }

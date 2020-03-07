@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 983. Minimum Cost For Tickets
  * 题意：两个数组，days代表那一天得去玩，costs表示玩1天，2天，7天的花费，问怎么玩可以把days覆盖，并且花费最少
@@ -14,17 +15,17 @@ public class lc983 {
     public int mincostTickets(int[] days, int[] costs) {
         int[] dp = new int[366];    //366,把0空出来
         int days_cur = 0;
-        for (int i = 1; i < dp.length ; i++) {
-            if(i==days[days_cur]) { //在days中
-                int minCost = dp[Math.max(0, i-1)]+costs[0];
-                minCost = Math.min( minCost, dp[Math.max(0, i-7)]+costs[1] );
-                minCost = Math.min( minCost, dp[Math.max(0, i-30)]+costs[2] );
+        for (int i = 1; i < dp.length; i++) {
+            if (i == days[days_cur]) { //在days中
+                int minCost = dp[Math.max(0, i - 1)] + costs[0];
+                minCost = Math.min(minCost, dp[Math.max(0, i - 7)] + costs[1]);
+                minCost = Math.min(minCost, dp[Math.max(0, i - 30)] + costs[2]);
                 dp[i] = minCost;
-                if(days_cur<days.length-1) days_cur++;  //防止越界
-            }else{
-                dp[i] = dp[i-1];
+                if (days_cur < days.length - 1) days_cur++;  //防止越界
+            } else {
+                dp[i] = dp[i - 1];
             }
         }
-        return dp[dp.length-1];
+        return dp[dp.length - 1];
     }
 }

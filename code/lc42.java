@@ -12,32 +12,33 @@ import java.util.Stack;
  */
 public class lc42 {
     public static void main(String[] args) {
-        int[] height = {0,1,0,2,1,0,1,3,2,1,2,1};
+        int[] height = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
         System.out.println(trap(height));
         System.out.println(trap2(height));
     }
+
     public static int trap(int[] height) {
-        if(height.length<3)
+        if (height.length < 3)
             return 0;
         int left = 0;
-        int right = height.length-1;
-        int res =0;
+        int right = height.length - 1;
+        int res = 0;
 
-        while(left<right){
-            if(height[left]<height[right]){
+        while (left < right) {
+            if (height[left] < height[right]) {
                 int edge_l = height[left];
                 left++;
-                while(height[left]<edge_l && left<right){
-                    if(edge_l-height[left]>0)
-                        res += edge_l-height[left];
+                while (height[left] < edge_l && left < right) {
+                    if (edge_l - height[left] > 0)
+                        res += edge_l - height[left];
                     left++;
                 }
-            }else if(height[left]>=height[right] && left<right){
+            } else if (height[left] >= height[right] && left < right) {
                 int edge_r = height[right];
                 right--;
-                while(height[right]<edge_r){
-                    if(edge_r-height[right]>0)
-                        res += edge_r-height[right];
+                while (height[right] < edge_r) {
+                    if (edge_r - height[right] > 0)
+                        res += edge_r - height[right];
                     right--;
                 }
             }
@@ -47,17 +48,16 @@ public class lc42 {
 
     public static int trap2(int[] A) {
         //栈方法
-        if (A==null) return 0;
+        if (A == null) return 0;
         Stack<Integer> s = new Stack<Integer>();
         int i = 0, maxWater = 0, maxBotWater = 0;
-        while (i < A.length){
-            if (s.isEmpty() || A[i]<=A[s.peek()]){
+        while (i < A.length) {
+            if (s.isEmpty() || A[i] <= A[s.peek()]) {
                 s.push(i++);    //递减栈
-            }
-            else {
+            } else {
                 int bot = s.pop();
-                maxBotWater = s.isEmpty()? // empty means no il
-                        0:(Math.min(A[s.peek()],A[i])-A[bot])*(i-s.peek()-1);
+                maxBotWater = s.isEmpty() ? // empty means no il
+                        0 : (Math.min(A[s.peek()], A[i]) - A[bot]) * (i - s.peek() - 1);
                 maxWater += maxBotWater;
             }
         }

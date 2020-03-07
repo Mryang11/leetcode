@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 58. Length of Last Word
  * 题意：最后一个单词的长度
@@ -12,12 +13,12 @@ public class lc58 {
     }
 
     public static int lengthOfLastWord(String s) {
-        int pointer = s.length()-1;
-        while(pointer>=0 && s.charAt(pointer)==' ')
+        int pointer = s.length() - 1;
+        while (pointer >= 0 && s.charAt(pointer) == ' ')
             pointer--;
         int end = pointer;
-        while( pointer>=0 && s.charAt(pointer)!=' ')
+        while (pointer >= 0 && s.charAt(pointer) != ' ')
             pointer--;
-        return end-pointer;
+        return end - pointer;
     }
 }

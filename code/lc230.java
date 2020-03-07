@@ -11,6 +11,21 @@ import java.util.Stack;
  * Tips：非递归中序遍历还是不熟练。。。
  */
 public class lc230 {
+    public int kthSmallest(TreeNode root, int k) {
+        Stack<TreeNode> st = new Stack();
+        while (!st.isEmpty() || root != null) {
+            while (root != null) {
+                st.add(root);
+                root = root.left;
+            }
+            root = st.pop();
+            k--;
+            if (k == 0) return root.val;
+            root = root.right;
+        }
+        return 0;
+    }
+
     public class TreeNode {
         int val;
         TreeNode left;
@@ -19,19 +34,5 @@ public class lc230 {
         TreeNode(int x) {
             val = x;
         }
-    }
-    public int kthSmallest(TreeNode root, int k) {
-        Stack<TreeNode> st = new Stack();
-        while(!st.isEmpty()||root!=null){
-            while(root!=null) {
-                st.add(root);
-                root = root.left;
-            }
-            root = st.pop();
-            k--;
-            if(k==0) return root.val;
-            root = root.right;
-        }
-        return 0;
     }
 }

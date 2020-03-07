@@ -14,12 +14,12 @@ import java.util.HashMap;
 public class lc560 {
     public int subarraySum(int[] nums, int k) {
         HashMap<Integer, Integer> hs = new HashMap();
-        hs.put(0,1);
+        hs.put(0, 1);
         int res = 0;
-        for (int sum = 0, i = 0; i < nums.length ; i++) {
+        for (int sum = 0, i = 0; i < nums.length; i++) {
             sum += nums[i];
-            res += hs.getOrDefault(sum-k,0);    // sum1+sum2 = k ，说明sum2-sum1那一段是一个解
-            hs.put(sum, hs.getOrDefault(sum,0)+1);
+            res += hs.getOrDefault(sum - k, 0);    // sum1+sum2 = k ，说明sum2-sum1那一段是一个解
+            hs.put(sum, hs.getOrDefault(sum, 0) + 1);
         }
         return res;
     }

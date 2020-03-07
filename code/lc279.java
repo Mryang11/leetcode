@@ -7,24 +7,26 @@ package code;
  * 思路：dp[i] = dp[i-j*j] +1
  * Tips：lc322
  */
+
 import java.util.Arrays;
 
 public class lc279 {
     public static void main(String[] args) {
         System.out.println(numSquares(12));
     }
+
     public static int numSquares(int n) {
         int[] dp = new int[n];
-        Arrays.fill(dp,Integer.MAX_VALUE);
-        for (int i = 1; i <= n ; i++) { //两个for循环
-            for (int j=1; j*j<=i ; j++) {
-                if(j*j==i)
-                    dp[i-1] = 1;
-                if(j*j<i){
-                    dp[i-1] = Math.min(dp[i-1-j*j]+1,dp[i-1]);
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        for (int i = 1; i <= n; i++) { //两个for循环
+            for (int j = 1; j * j <= i; j++) {
+                if (j * j == i)
+                    dp[i - 1] = 1;
+                if (j * j < i) {
+                    dp[i - 1] = Math.min(dp[i - 1 - j * j] + 1, dp[i - 1]);
                 }
             }
         }
-        return dp[n-1];
+        return dp[n - 1];
     }
 }

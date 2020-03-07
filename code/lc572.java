@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 572. Subtree of Another Tree
  * 题意：判断一棵树是否为另外一棵树的子树
@@ -11,20 +12,14 @@ package code;
  * Tips：
  */
 public class lc572 {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
+    public boolean isSubtree(TreeNode s, TreeNode t) {
+        if (s == null || t == null) return s == t;
+        return helper(s, t) || isSubtree(s.left, t) || isSubtree(s.right, t); // 注意递归方法的不同，是调用哪个函数
     }
 
-    public boolean isSubtree(TreeNode s, TreeNode t) {
-        if( s==null || t==null ) return s==t;
-        return helper(s,t) || isSubtree(s.left, t) || isSubtree(s.right, t); // 注意递归方法的不同，是调用哪个函数
-    }
-    public boolean helper(TreeNode s, TreeNode t){
-        if( s==null || t==null ) return s==t;
-        return s.val==t.val && helper(s.left, t.left) && helper(s.right, t.right);
+    public boolean helper(TreeNode s, TreeNode t) {
+        if (s == null || t == null) return s == t;
+        return s.val == t.val && helper(s.left, t.left) && helper(s.right, t.right);
     }
 
     public boolean isSubtree2(TreeNode s, TreeNode t) {
@@ -34,13 +29,24 @@ public class lc572 {
         helper2(s, tree2);
         return tree1.toString().contains(tree2.toString());
     }
-    public void helper2(TreeNode node, StringBuilder res){
-        if(node==null)
+
+    public void helper2(TreeNode node, StringBuilder res) {
+        if (node == null)
             res.append(",#");   //先放','表示一个新节点的开始，#代表null
         else {
-            res.append( ","+node.val );
+            res.append("," + node.val);
             helper2(node.left, res);
             helper2(node.right, res);
+        }
+    }
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
         }
     }
 

@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 714. Best Time to Buy and Sell Stock with Transaction Fee
  * 题意：买卖股票，不限次数，但有交易费用，求最大利润
@@ -14,15 +15,15 @@ package code;
  */
 public class lc714 {
     public int maxProfit(int[] prices, int fee) {
-        if(prices.length==0) return 0;
+        if (prices.length == 0) return 0;
         int b1 = -prices[0];
-        int s1=0, b = 0, s = 0;
-        for (int i = 0; i < prices.length ; i++) {
-            b = Math.max(b1, s1-prices[i]);
-            s = Math.max(s1, b1+prices[i]-fee);
+        int s1 = 0, b = 0, s = 0;
+        for (int i = 0; i < prices.length; i++) {
+            b = Math.max(b1, s1 - prices[i]);
+            s = Math.max(s1, b1 + prices[i] - fee);
             s1 = s;
             b1 = b;
         }
-        return Math.max(s,b);
+        return Math.max(s, b);
     }
 }

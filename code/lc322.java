@@ -8,6 +8,7 @@ package code;
  * Tips：不用Set, 加一个dp[0]=0，可以直接递归出结果
  *      dp[i] 表示组合成总值i的最少零钱数
  */
+
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -15,26 +16,27 @@ public class lc322 {
     public static void main(String[] args) {
         System.out.println(coinChange(new int[]{2}, 3));
     }
+
     public static int coinChange(int[] coins, int amount) {
-        if(amount==0) return 0;
+        if (amount == 0) return 0;
         int[] dp = new int[amount];
         Arrays.fill(dp, Integer.MAX_VALUE);
         HashSet<Integer> s = new HashSet();
-        for (int i = 0; i < coins.length ; i++) {
+        for (int i = 0; i < coins.length; i++) {
             s.add(coins[i]);
         }
-        for (int i = 0; i < amount ; i++) {
-            if(s.contains(i+1))
+        for (int i = 0; i < amount; i++) {
+            if (s.contains(i + 1))
                 dp[i] = 1;
-            else{
-                for (int j = 0; j < coins.length ; j++) {
-                    if( i+1-coins[j]>0 && dp[i - coins[j]]!=Integer.MAX_VALUE ) {   // 注意子结构没解的情况
+            else {
+                for (int j = 0; j < coins.length; j++) {
+                    if (i + 1 - coins[j] > 0 && dp[i - coins[j]] != Integer.MAX_VALUE) {   // 注意子结构没解的情况
                         dp[i] = Math.min(dp[i - coins[j]] + 1, dp[i]);
                     }
                 }
             }
         }
-        return dp[amount-1]==Integer.MAX_VALUE ? -1 : dp[amount-1];     //没解返回-1
+        return dp[amount - 1] == Integer.MAX_VALUE ? -1 : dp[amount - 1];     //没解返回-1
     }
 
     public static int coinChange2(int[] coins, int amount) {

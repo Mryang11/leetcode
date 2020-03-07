@@ -15,21 +15,21 @@ import java.util.HashMap;
 public class lc166 {
     public String fractionToDecimal(int numerator, int denominator) {
         StringBuilder sb = new StringBuilder();
-        if( (numerator>0&&denominator<0) || (numerator<0&&denominator>0)) sb.append("-");   //符号
-        long num = Math.abs((long)numerator);     //用long防止溢出
-        long den = Math.abs((long)denominator);
-        sb.append(num/den);   //整数部分
+        if ((numerator > 0 && denominator < 0) || (numerator < 0 && denominator > 0)) sb.append("-");   //符号
+        long num = Math.abs((long) numerator);     //用long防止溢出
+        long den = Math.abs((long) denominator);
+        sb.append(num / den);   //整数部分
 
         HashMap<Long, Integer> hm = new HashMap();    //key存储余数，余数>0 <9， value存储index，用来加(
-        long n = num%den;
-        if(n!=0) sb.append(".");
-        while( n!=0 && !hm.containsKey(n)){
+        long n = num % den;
+        if (n != 0) sb.append(".");
+        while (n != 0 && !hm.containsKey(n)) {
             hm.put(n, sb.length());
-            n = n*10;
-            sb.append(n/den);
-            n = n%den;
+            n = n * 10;
+            sb.append(n / den);
+            n = n % den;
         }
-        if(hm.containsKey(n)){
+        if (hm.containsKey(n)) {
             int index = hm.get(n);
             sb.insert(index, "(");
             sb.append(")");

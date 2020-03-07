@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 169. Majority Element
  * 题意：数组中有一个元素出现次数 >len/2 ,找出这个数
@@ -11,12 +12,12 @@ public class lc169 {
     public int majorityElement(int[] nums) {
         int res = nums[0];
         int count = 1;
-        for (int i = 1; i < nums.length ; i++) {    // 摩尔投票法，看这个数出现了几次
-            if(nums[i]!=res)    // 不是这个数就 --， ==0就用当前数替换res
+        for (int i = 1; i < nums.length; i++) {    // 摩尔投票法，看这个数出现了几次
+            if (nums[i] != res)    // 不是这个数就 --， ==0就用当前数替换res
                 count--;
             else
                 count++;
-            if(count==0){
+            if (count == 0) {
                 res = nums[i];
                 count++;
             }

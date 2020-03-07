@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 142. Linked List Cycle II
  * 题意：求链表环的起始节点
@@ -8,22 +9,17 @@ package code;
  * Tips：
  */
 public class lc142 {
-    public class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) { val = x; }
-    }
     public ListNode detectCycle(ListNode head) {
-        if(head==null)
+        if (head == null)
             return null;
         ListNode slow = head;
         ListNode fast = head;
         ListNode slow2 = head;
-        while( fast.next!=null && fast.next.next!=null ){
+        while (fast.next != null && fast.next.next != null) {
             slow = slow.next;
             fast = fast.next.next;
-            if(slow==fast){
-                while(slow2!=slow){
+            if (slow == fast) {
+                while (slow2 != slow) {
                     slow = slow.next;
                     slow2 = slow2.next;
                 }
@@ -34,15 +30,15 @@ public class lc142 {
     }
 
     public ListNode detectCycle2(ListNode head) {
-        if(head==null||head.next==null) return null;
+        if (head == null || head.next == null) return null;
         ListNode slow = head;
         ListNode fast = head.next;
-        while(fast!=null&&fast.next!=null){
+        while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
-            if(slow==fast){
+            if (slow == fast) {
                 slow = slow.next;
-                while(head!=slow){
+                while (head != slow) {
                     head = head.next;
                     slow = slow.next;
                 }
@@ -50,5 +46,14 @@ public class lc142 {
             }
         }
         return null;
+    }
+
+    public class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+        }
     }
 }

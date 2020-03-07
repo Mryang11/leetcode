@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 48. Rotate Image
  * 题意：将数组顺时针翻转90度
@@ -14,8 +15,9 @@ public class lc48 {
         System.out.println();
         printArr(matrix);
     }
+
     public static void rotate(int[][] matrix) {
-        for (int i = 0; i <matrix.length ; i++) {
+        for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < i; j++) {
                 int temp = matrix[i][j];
                 matrix[i][j] = matrix[j][i];
@@ -23,15 +25,15 @@ public class lc48 {
             }
         }
         for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j <matrix[0].length/2; j++) {
+            for (int j = 0; j < matrix[0].length / 2; j++) {
                 int temp = matrix[i][j];
-                matrix[i][j] = matrix[i][matrix[0].length-1-j];
-                matrix[i][matrix[0].length-1-j] = temp;
+                matrix[i][j] = matrix[i][matrix[0].length - 1 - j];
+                matrix[i][matrix[0].length - 1 - j] = temp;
             }
         }
     }
 
-    public static void printArr(int[][] matrix){
+    public static void printArr(int[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
                 System.out.print(matrix[i][j]);

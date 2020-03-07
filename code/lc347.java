@@ -7,31 +7,33 @@ package code;
  * 思路：放入hashmap计数是基本思路，后续可以用桶排序的方法，时间复杂度为O(n)。若用优先队列，则时间复杂度为nlg(k)。
  * Tips：第二部巧妙的用了桶排序，避免了比较排序的复杂度
  */
+
 import java.util.*;
 
 public class lc347 {
     public static void main(String[] args) {
-        int[] nums = {1,1,1,2,2,3};
+        int[] nums = {1, 1, 1, 2, 2, 3};
         int k = 2;
-        System.out.println(topKFrequent(nums,2));
+        System.out.println(topKFrequent(nums, 2));
     }
+
     public static List<Integer> topKFrequent(int[] nums, int k) {
         HashMap<Integer, Integer> hm = new HashMap();
         TreeMap<Integer, ArrayList<Integer>> tm = new TreeMap();
         List<Integer> res = new ArrayList<>();
-        for (int i = 0; i < nums.length ; i++) {    //放入hashmap计数
-            hm.put(nums[i], hm.getOrDefault(nums[i], 0)+1);
+        for (int i = 0; i < nums.length; i++) {    //放入hashmap计数
+            hm.put(nums[i], hm.getOrDefault(nums[i], 0) + 1);
         }
-        for( int i : hm.keySet() ){ //key,value反转，放入treemap  TreeMap中默认是按照升序进行排序的
+        for (int i : hm.keySet()) { //key,value反转，放入treemap  TreeMap中默认是按照升序进行排序的
             int freq = hm.get(i);
-            if(tm.containsKey(freq))
+            if (tm.containsKey(freq))
                 tm.get(freq).add(i);
             else {
                 tm.put(freq, new ArrayList<>());
                 tm.get(freq).add(i);
             }
         }
-        while(res.size()<k) {
+        while (res.size() < k) {
             List ls = tm.pollLastEntry().getValue();    //pollLastEntry将最后一个弹出，而LastEntry只是查看
             res.addAll(ls);
         }

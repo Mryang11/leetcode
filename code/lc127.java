@@ -8,27 +8,28 @@ package code;
  * Tips：拓扑排序，很经典的BFS，好好看看
  *      lc207
  */
+
 import java.util.ArrayDeque;
 import java.util.List;
 import java.util.Queue;
 
 public class lc127 {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        if(!wordList.contains(endWord)) return 0;
+        if (!wordList.contains(endWord)) return 0;
         Queue<String> qu = new ArrayDeque();    //用一个Queue和int size类似树的层次遍历，和两个hashset效果一样
         qu.add(beginWord);
         int level = 2;
-        while(!qu.isEmpty()){
+        while (!qu.isEmpty()) {
             int size = qu.size();
-            for (int i = 0; i < size ; i++) {
+            for (int i = 0; i < size; i++) {
                 char[] curr_str = qu.remove().toCharArray();
                 System.out.println(String.valueOf(curr_str));
-                for (int j = 0; j < curr_str.length ; j++) {
+                for (int j = 0; j < curr_str.length; j++) {
                     char ch = curr_str[j];
-                    for (char k = 'a'; k <='z' ; k++) { //如果每次比较两个字符串是否差一位，时间复杂度太大，所以直接替换一个字符
+                    for (char k = 'a'; k <= 'z'; k++) { //如果每次比较两个字符串是否差一位，时间复杂度太大，所以直接替换一个字符
                         curr_str[j] = k;
-                        if(String.valueOf(curr_str).equals(endWord)) return level;
-                        if(wordList.contains(String.valueOf(curr_str))){
+                        if (String.valueOf(curr_str).equals(endWord)) return level;
+                        if (wordList.contains(String.valueOf(curr_str))) {
                             wordList.remove(String.valueOf(curr_str));  //这要remove
                             qu.add(String.valueOf(curr_str));
                         }

@@ -13,26 +13,27 @@ public class lc20 {
     public static void main(String[] args) {
         System.out.println(isValid("]"));
     }
+
     public static boolean isValid(String s) {
         Stack<String> st = new Stack();
-        HashMap<String,String> hm = new HashMap();
-        hm.put("(",")");
-        hm.put("[","]");
-        hm.put("{","}");
-        for (int i = 0; i < s.length() ; i++) {
+        HashMap<String, String> hm = new HashMap();
+        hm.put("(", ")");
+        hm.put("[", "]");
+        hm.put("{", "}");
+        for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
-            if(ch=='(' || ch=='[' || ch=='{'){
+            if (ch == '(' || ch == '[' || ch == '{') {
                 st.push(String.valueOf(ch));
-            }else{
-                if(st.size()==0)
+            } else {
+                if (st.size() == 0)
                     return false;
                 String temp1 = hm.get(st.pop());
                 String temp2 = String.valueOf(ch);
-                if(!temp1.equals(temp2))
+                if (!temp1.equals(temp2))
                     return false;
             }
         }
-        if(st.size()==0)
+        if (st.size() == 0)
             return true;
         return false;
     }

@@ -12,32 +12,36 @@ import java.util.Queue;
  * Tips：
  */
 public class lc104 {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
     public int maxDepth(TreeNode root) {
-        if(root==null) return 0;
-        return Math.max(maxDepth(root.left),maxDepth(root.right)) + 1;
+        if (root == null) return 0;
+        return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
     }
 
     public int maxDepth2(TreeNode root) {
-        if(root==null) return 0;
+        if (root == null) return 0;
         Queue<TreeNode> q = new ArrayDeque<>();
         q.add(root);
         int depth = 0;
-        while(!q.isEmpty()){
+        while (!q.isEmpty()) {
             int size = q.size();
-            while(size > 0){
+            while (size > 0) {
                 TreeNode tn = q.remove();
-                if(tn.left!=null) q.add(tn.left);
-                if(tn.right!=null) q.add(tn.right);
+                if (tn.left != null) q.add(tn.left);
+                if (tn.right != null) q.add(tn.right);
                 size--;
             }
             depth++;
         }
         return depth;
+    }
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }

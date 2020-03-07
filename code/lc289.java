@@ -1,4 +1,5 @@
 package code;
+
 /*
  * 289. Game of Life
  * 题意：按照游戏规则，计算下一个时刻的矩阵，inpalce
