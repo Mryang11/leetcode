@@ -10,7 +10,7 @@
 | 005  | [Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/) |Medium|[Java](./code/lc5.java)
 | 007  | [Reverse Integer](https://leetcode.com/problems/reverse-integer/) |Easy|[Java](./code/lc7.java)
 | 008  | [String to Integer (atoi)](https://leetcode.com/problems/string-to-integer-atoi/) |Medium|[Java](./code/lc8.java)
-| []010  | [Regular Expression Matching](https://leetcode.com/problems/regular-expression-matching/) | Hard | [Java](./code/lc10.java)
+| [x]010  | [Regular Expression Matching](https://leetcode.com/problems/regular-expression-matching/) | Hard | [Java](./code/lc10.java)
 | 011  | [Container With Most Water](https://leetcode.com/problems/container-with-most-water/) |Medium| [Java](./code/lc11.java)
 | 013  | [Roman to Integer](https://leetcode.com/problems/roman-to-integer) |Easy| [Java](./code/lc13.java)
 | 014  | [Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix) |Easy| [Java](./code/lc14.java)
