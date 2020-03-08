@@ -18,23 +18,27 @@ public class lc4 {
     public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int size1 = nums1.length;
         int size2 = nums2.length;
-        if (size1 > size2)
+        if (size1 > size2) {
             return findMedianSortedArrays(nums2, nums1);
+        }
 
         int low = 0;
         int high = nums1.length;
 
-        while (low <= high) {// <=别忘了=
+        while (low <= high) {
             int i = (low + high) / 2;
-            int j = (size1 + size2 + 1) / 2 - i;    // 注意+1
-            if (i > 0 && nums1[i - 1] > nums2[j]) {  //注意判断i是否越界
-                //need reduce i
+            // 注意+1
+            int j = (size1 + size2 + 1) / 2 - i;
+            // 注意判断i是否越界
+            if (i > 0 && nums1[i - 1] > nums2[j]) {
+                // need reduce i
                 high = i - 1;
-            } else if (i < size1 && nums2[j - 1] > nums1[i]) { //注意判断i是否越界
-                //need increase i
+                // 注意判断i是否越界
+            } else if (i < size1 && nums2[j - 1] > nums1[i]) {
+                // need increase i
                 low = i + 1;
             } else {
-                //find correct i
+                // find correct i
                 int l, r;
                 if (i == 0) {
                     //nums1 没有 l
@@ -46,8 +50,9 @@ public class lc4 {
                     l = Math.max(nums1[i - 1], nums2[j - 1]);
                 }
 
-                if ((size1 + size2) % 2 == 1)
+                if ((size1 + size2) % 2 == 1) {
                     return l;
+                }
 
                 if (i == size1) {
                     //nums1 没有 r
