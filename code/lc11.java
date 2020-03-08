@@ -1,6 +1,6 @@
 package code;
 
-/*
+/**
  * 11. Container With Most Water
  * 题意：数组下标代表横坐标，数组中的值代表纵坐标，求最大面积
  * 难度：Medium
@@ -20,10 +20,11 @@ public class lc11 {
         int result = 0;
         while (left < right) {
             result = Math.max(result, Math.min(height[left], height[right]) * (right - left));
-            if (height[left] < height[right])
+            if (height[left] < height[right]) {
                 left++;
-            else
+            } else {
                 right--;
+            }
         }
         return result;
     }
