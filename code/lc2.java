@@ -1,6 +1,6 @@
 package code;
 
-/*
+/**
  * 2. Add Two Numbers
  * 题意：两个链表，节点上的数逆序组成一个数字，求和，返回链表
  * 难度：Medium

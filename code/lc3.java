@@ -1,5 +1,8 @@
 package code;
-/*
+import java.util.HashMap;
+import java.util.Map;
+
+/**
 * 3. Longest Substring Without Repeating Characters
 * 题意：找出字符串中没有重复字母的最大长度
 * 难度：Medium
@@ -32,10 +35,6 @@ package code;
      来源：力扣（LeetCode）
      著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
  */
-
-import java.util.HashMap;
-import java.util.Map;
-
 public class lc3 {
     public static void main(String[] args) {
         String s = "abba";

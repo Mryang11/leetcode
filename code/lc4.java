@@ -1,6 +1,6 @@
 package code;
 
-/*
+/**
  * 4. Median of Two Sorted Arrays
  * 题意：两个有序数组，找出中位数，要求复杂度O(logN)
  * 难度：Hard

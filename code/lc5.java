@@ -1,6 +1,6 @@
 package code;
 
-/*
+/**
  * 5. Longest Palindromic Substring
  * 题意：找出给定字符串中最长的回文串
  * 难度：Medium
