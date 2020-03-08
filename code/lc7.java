@@ -13,14 +13,20 @@ public class lc7 {
     }
 
     public static int reverse(int x) {
-        int result = 0;
+        int ans = 0;
         while (x != 0) {
-            int temp = result * 10 + x % 10;
-            if (temp / 10 != result)
+            int pop = x % 10;
+            // 2的31次方-1的个位数 = 7
+            if (ans > Integer.MAX_VALUE / 10 || (ans == Integer.MAX_VALUE / 10 && pop > 7)) {
                 return 0;
-            result = temp;
-            x = x / 10;
+            }
+            // -2的31次方的个位数 = 8
+            if (ans < Integer.MIN_VALUE / 10 || (ans == Integer.MIN_VALUE / 10 && pop < -8)) {
+                return 0;
+            }
+            ans = ans * 10 + pop;
+            x /= 10;
         }
-        return result;
+        return ans;
     }
 }
