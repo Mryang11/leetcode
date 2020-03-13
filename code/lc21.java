@@ -1,8 +1,8 @@
 package code;
 
-/*
+/**
  * 21. Merge Two Sorted Lists
- * 题意：合并两个链表
+ * 题意：合并两个有序链表
  * 难度：Easy
  * 分类：Linked List
  * Tips：可用递归的写法，代码更简洁
@@ -10,26 +10,41 @@ package code;
 public class lc21 {
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        ListNode res = new ListNode(0);
-        ListNode temp = res;
+        // maintain an unchanging reference to node ahead of the return node.
+        ListNode prehead = new ListNode(-1);
+
+        ListNode prev = prehead;
         while (l1 != null && l2 != null) {
-            if (l1.val < l2.val) {
-                temp.next = l1;
-                temp = temp.next;
+            if (l1.val <= l2.val) {
+                prev.next = l1;
                 l1 = l1.next;
             } else {
-                temp.next = l2;
-                temp = temp.next;
+                prev.next = l2;
                 l2 = l2.next;
             }
+            prev = prev.next;
         }
-        if (l1 != null)
-            temp.next = l1;
-        if (l2 != null)
-            temp.next = l2;
-        return res.next;
+
+        // exactly one of l1 and l2 can be non-null at this point, so connect
+        // the non-null list to the end of the merged list.
+        prev.next = l1 == null ? l2 : l1;
+
+        return prehead.next;
     }
 
+    public ListNode mergeTwoLists1(ListNode l1, ListNode l2) {
+        if (l1 == null) {
+            return l2;
+        } else if (l2 == null) {
+            return l1;
+        } else if (l1.val < l2.val) {
+            l1.next = mergeTwoLists1(l1.next, l2);
+            return l1;
+        } else {
+            l2.next = mergeTwoLists1(l1, l2.next);
+            return l2;
+        }
+    }
 
     public class ListNode {
         int val;
