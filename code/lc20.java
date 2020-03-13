@@ -1,9 +1,10 @@
 package code;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
-/*
+/**
  * 20. Valid Parentheses
  * 题意：括号匹配
  * 难度：Easy
@@ -15,8 +16,8 @@ public class lc20 {
     }
 
     public static boolean isValid(String s) {
-        Stack<String> st = new Stack();
-        HashMap<String, String> hm = new HashMap();
+        Stack<String> st = new Stack<>();
+        HashMap<String, String> hm = new HashMap<>();
         hm.put("(", ")");
         hm.put("[", "]");
         hm.put("{", "}");
@@ -25,30 +26,31 @@ public class lc20 {
             if (ch == '(' || ch == '[' || ch == '{') {
                 st.push(String.valueOf(ch));
             } else {
-                if (st.size() == 0)
+                if (st.size() == 0) {
                     return false;
+                }
                 String temp1 = hm.get(st.pop());
                 String temp2 = String.valueOf(ch);
-                if (!temp1.equals(temp2))
+                if (!temp1.equals(temp2)) {
                     return false;
+                }
             }
         }
-        if (st.size() == 0)
-            return true;
-        return false;
+        return st.size() == 0;
     }
 
     public boolean isValid2(String s) {
-        Stack<Character> stack = new Stack<Character>();
+        Stack<Character> stack = new Stack<>();
         for (char c : s.toCharArray()) {
-            if (c == '(')
+            if (c == '(') {
                 stack.push(')');
-            else if (c == '{')
+            } else if (c == '{') {
                 stack.push('}');
-            else if (c == '[')
+            } else if (c == '[') {
                 stack.push(']');
-            else if (stack.isEmpty() || stack.pop() != c)
+            } else if (stack.isEmpty() || stack.pop() != c) {
                 return false;
+            }
         }
         return stack.isEmpty();
     }
